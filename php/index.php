@@ -1,3 +1,5 @@
+<?php require_once('conexao.php'); ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -106,6 +108,73 @@
           </ul>
         </div>
         <div>
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-light" href="#" id="offcanvasNavbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Deletar
+              </a>
+              <ul class="dropdown-menu bg-secondary" aria-labelledby="offcanvasNavbarDropdown">
+                <li>
+                  <a type="button" class="mt-2 dropdown-item btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal9">
+                    Deletar Serviço
+                  </a>
+                </li>
+                <li>
+                  <a type="button" class="mt-2 dropdown-item btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal10">
+                    Deletar Cliente
+                  </a>
+                </li>
+                <li>
+                  <a type="button" class="mt-2 dropdown-item btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal11">
+                    Deletar Pet
+                  </a>
+                </li>
+                <li>
+                  <a type="button" class="mt-2 dropdown-item btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal12">
+                    Deletar Funcionário
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-light" href="#" id="offcanvasNavbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Modalidade Serviço
+              </a>
+              <ul class="dropdown-menu bg-secondary" aria-labelledby="offcanvasNavbarDropdown">
+                <li>
+                  <a type="button" class="mt-2 dropdown-item btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal13">
+                    Adicionar descrição de serviço
+                  </a>
+                </li>
+                <li>
+                  <a type="button" class="mt-2 dropdown-item btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal14">
+                    Editar descrição de serviço
+                  </a>
+                </li>
+                <li>
+                  <a type="button" class="mt-2 dropdown-item btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal15">
+                    Deletar descrição de serviço
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+       
+        <div>
           <a type="button" class="mt-2 dropdown-item btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Multas
           </a>
@@ -139,37 +208,37 @@
             <tr>
               <td>
                 <label for="horarioInicio" name="horarioInicio" class="form-label">Horario Início</label>
-                <input type="time" class="form-control" id="horarioInicio" name="horarioInicio">
+                <input type="time" class="form-control" id="horarioInicio" name="horarioInicio" required>
               </td>
               <td>
                 <label for="horarioFinal" name="horarioFinal" class="form-label">Horario Final</label>
-                <input type="time" class="form-control" id="horarioFinal" name="horarioFinal">
+                <input type="time" class="form-control" id="horarioFinal" name="horarioFinal" required>
               </td>
             </tr>
             <tr>
               <td>
-                <label for="pet" name="pet" class="form-label">Pet:</label>
-                <select class="form-select" name="pet" id="pet">
-                  <option value="">A</option>
-                  <option value="">B</option>
+                <label for="pet" name="pet" class="form-label">Pet</label>
+                <select class="form-select" name="pet" id="pet" required>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
                 </select>
               </td>
             </tr>
             <tr>
               <td>
-                <label for="funcionario" name="funcionario" class="form-label">Funcionário:</label>
-                <select class="form-select" name="funcionario" id="funcionario">
-                  <option value="">A</option>
-                  <option value="">B</option>
+                <label for="funcionario" name="funcionario" class="form-label">Funcionário</label>
+                <select class="form-select" name="funcionario" id="funcionario" required>
+                <option value="1">1</option>
+                  <option value="2">2</option>
                 </select>
               </td>
             </tr>
             <tr>
               <td>
-                <label for="servico" name="servico" class="form-label">Serviço:</label>
-                <select class="form-select" name="servico" id="servico">
-                  <option value="">A</option>
-                  <option value="">B</option>
+                <label for="servico" name="servico" class="form-label">Serviço</label>
+                <select class="form-select" name="servico" id="servico" required>
+                <option value="1">1</option>
+                  <option value="2">2</option>
                 </select>
               </td>
             </tr>
@@ -188,7 +257,7 @@
 <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form action="cadastrar/cadastrarServico.php" method="post">
+      <form action="cadastrar/cadastrarCliente.php" method="post">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Cadastrar Cliente</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -199,33 +268,33 @@
             <tr>
               <td>
                 <label for="nomeCompleto" name="nomeCompleto" class="form-label">Nome Completo</label>
-                <input type="text" class="form-control" id="nomeCompleto" name="nomeCompleto">
+                <input type="text" class="form-control" id="nomeCompleto" name="nomeCompleto" requided>
               </td>
               <td>
                 <label for="email" name="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="email" name="email">
+                <input type="email" class="form-control" id="email" name="email" requided>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="cpf" name="cpf" class="form-label">CPF</label>
-                <input type="number" class="form-control" id="cpf" name="cpf">
+                <input type="number" class="form-control" id="cpf" name="cpf" requided>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="telefone" name="telefone" class="form-label">Telefone</label>
-                <input type="number" class="form-control" id="telefone" name="telefone">
+                <input type="number" class="form-control" id="telefone" name="telefone" requided>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="cep" name="cep" class="form-label">CEP</label>
-                <input type="number" class="form-control" id="cep" name="cep">
+                <input type="number" class="form-control" id="cep" name="cep" requided>
               </td>
               <td>
                 <label for="numero" name="numero" class="form-label">Nº</label>
-                <input type="number" class="form-control" id="numero" name="numero">
+                <input type="number" class="form-control" id="numero" name="numero" requided>
               </td>
             </tr>
           </table>
@@ -243,7 +312,7 @@
 <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form action="cadastrar/cadastrarServico.php" method="post">
+      <form action="cadastrar/cadastrarPet.php" method="post">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Cadastrar Pet</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -258,21 +327,21 @@
               </td>
               <td>
                 <label for="raca" name="raca" class="form-label">Raça</label>
-                <input type="text" class="form-control" id="raca" name="raca">
+                <input type="text" class="form-control" id="raca" name="raca" required>
               </td>
             </tr>
             <tr>
               <td>
-                <label for="raca" name="raca" class="form-label">Data de Nascimento</label>
-                <input type="date" class="form-control" id="raca" name="raca">
+                <label for="dataNasc" name="dataNasc" class="form-label">Data de Nascimento</label>
+                <input type="date" class="form-control" id="dataNasc" name="dataNasc">
               </td>
             </tr>
             <tr>
               <td>
                 <label for="nomeCliente" name="nomeCliente" class="form-label">Nome do Cliente</label>
-                <select class="form-select" name="nomeCliente" id="nomeCliente">
-                  <option value="">A</option>
-                  <option value="">B</option>
+                <select class="form-select" name="nomeCliente" id="nomeCliente" required>
+                  <option value="1">2</option>
+                  <option value="2">1</option>
                 </select>
               </td>
             </tr>
@@ -291,7 +360,7 @@
 <div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form action="cadastrar/cadastrarServico.php" method="post">
+      <form action="cadastrar/cadastrarFuncionario.php" method="post">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Cadastrar Funcionário</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -301,19 +370,19 @@
             <tr>
               <td>
                 <label for="nomeFuncionario" name="nomeFuncionario" class="form-label">Nome Completo</label>
-                <input type="text" class="form-control" id="nomeFuncionario" name="nomeFuncionario">
+                <input type="text" class="form-control" id="nomeFuncionario" name="nomeFuncionario" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="cpfFuncionario" name="cpfFuncionario" class="form-label">CPF</label>
-                <input type="text" class="form-control" id="cpfFuncionario" name="cpfFuncionario">
+                <input type="text" class="form-control" id="cpfFuncionario" name="cpfFuncionario" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="telefoneFuncionario" name="telefoneFuncionario" class="form-label">Telefone</label>
-                <input type="number" class="form-control" id="telefoneFuncionario" name="telefoneFuncionario">
+                <input type="number" class="form-control" id="telefoneFuncionario" name="telefoneFuncionario" required>
               </td>
             </tr>
           </table>
@@ -327,65 +396,95 @@
   </div>
 </div>
 
+
 <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form action="Editar/EditarServico.php" method="post">
+      <form action="editar/editarServico.php" method="post">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Editar Serviço</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-
           <table>
             <tr>
               <td>
-                <label for="servico_edit" name="servico_edit" class="form-label">Selecione o serviço</label>
-                <select class="form-select" name="servico_edit" id="servico_edit">
-                  <option value="">A</option>
-                  <option value="">B</option>
+                <label for="servico_edit" name="servico_edit" class="form-label">Selecione o serviço ao qual será editado</label>
+                <select class="form-select" name="servico_edit" id="servico_edit" required>
+                  <?php  
+                  $com_servico = "SELECT * FROM agendamento";
+                  $id_servico = mysqli_query($conexao, $com_servico);
+                  
+                  while ($id_ser = mysqli_fetch_assoc($id_servico)) {
+
+                  $id_pet = $id_ser['pets_id'];
+
+                  $listar_por_pets = "SELECT * FROM pets WHERE id = '$id_pet'";
+                  $nome_pet = mysqli_query($conexao, $listar_por_pets);
+                  $nom_pet = mysqli_fetch_assoc($nome_pet);
+
+                  $list_pets = $nom_pet['nome'];
+
+                  $listar_por_cli = "SELECT * FROM clientes WHERE id = ".$nom_pet['clientes_id'];
+                  $nome_cli = mysqli_query($conexao, $listar_por_cli);
+                  $nom_cli = mysqli_fetch_assoc($nome_cli);
+
+                  $nom_client = $nom_cli['nomeCompleto'];
+                  
+
+                  echo "<option value='$id_pet'>$nom_client - $list_pets</option>";
+                
+                  }?>
                 </select>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="horarioInicio" name="horarioInicio" class="form-label">Horario Início</label>
-                <input type="time" class="form-control" id="horarioInicio" name="horarioInicio">
+                <input type="time" class="form-control" id="horarioInicio" value="<?=$horarioInicio?>" name="horarioInicio" required>
               </td>
               <td>
                 <label for="horarioFinal" name="horarioFinal" class="form-label">Horario Final</label>
-                <input type="time" class="form-control" id="horarioFinal" name="horarioFinal">
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="pet" name="pet" class="form-label">Pet</label>
-                <select class="form-select" name="pet" id="pet">
-                  <option value="">A</option>
-                  <option value="">B</option>
-                </select>
+                <input type="time" class="form-control" id="horarioFinal" value="<?=$horarioFinal?>" name="horarioFinal" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="funcionario" name="funcionario" class="form-label">Funcionário</label>
-                <select class="form-select" name="funcionario" id="funcionario">
-                  <option value="">A</option>
-                  <option value="">B</option>
+                <select class="form-select" name="funcionario" id="funcionario" required>
+                <?php 
+                $edit_pet_funcionario = "SELECT * FROM funcionarios";
+                $editar_pet_func = mysqli_query($conexao, $edit_pet_funcionario);
+                while ($func_pet = mysqli_fetch_assoc($editar_pet_func)){
+
+                $nomeFunc = $func_pet['nomeCompleto'];
+                $idFunc = $func_pet['id'];
+
+                echo"<option value='$idFunc'>$nomeFunc</option>";
+                }
+                ?>
                 </select>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="servico" name="servico" class="form-label">Serviço</label>
-                <select class="form-select" name="servico" id="servico">
-                  <option value="">A</option>
-                  <option value="">B</option>
+                <select class="form-select" name="servico" id="servico" required>
+                <?php 
+                $edit_pet_servico = "SELECT * FROM servicos";
+                $editar_pet_serv = mysqli_query($conexao, $edit_pet_servico);
+                while ($serv_pet = mysqli_fetch_assoc($editar_pet_serv)){
+
+                $nomeserv = $serv_pet['descricao'];
+                $idserv = $serv_pet['id'];
+
+                echo"<option value='$idserv'>$nomeserv</option>";
+                }
+                ?>
                 </select>
               </td>
             </tr>
           </table>
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -399,57 +498,64 @@
 <div class="modal fade" id="exampleModal6" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form action="Editar/EditarServico.php" method="post">
+      <form action="editar/editarCliente.php" method="post">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Cadastrar Cliente</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Editar Cliente</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-
           <table>
             <tr>
               <td>
-                <label for="cliente_edit" name="cliente_edit" class="form-label">Selecione o cliente</label>
-                <select class="form-select" name="cliente_edit" id="cliente_edit">
-                  <option value="">A</option>
-                  <option value="">B</option>
+                <label for="cliente_edit" name="cliente_edit" class="form-label">Selecione o cliente ao qual será editado</label>
+                <select class="form-select" name="cliente_edit" id="cliente_edit" required>
+                  <?php 
+                  $com_client = "SELECT * FROM clientes";
+                  $res_clienes = mysqli_query($conexao, $com_client);
+                  while ($clientes = mysqli_fetch_assoc($res_clienes)) {
+                  
+                  $id_cliente = $clientes['id'];
+                  $nom_cliente = $clientes['nomeCompleto'];
+
+                  echo "<option value='$id_cliente'>$nom_cliente</option>";
+                  
+                  }?>
                 </select>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="nomeCompleto" name="nomeCompleto" class="form-label">Nome Completo</label>
-                <input type="text" class="form-control" id="nomeCompleto" name="nomeCompleto">
+                <input type="text" class="form-control" id="nomeCompleto" name="nomeCompleto" required>
               </td>
               <td>
                 <label for="email" name="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="email" name="email">
+                <input type="email" class="form-control" id="email" name="email" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="cpf" name="cpf" class="form-label">CPF</label>
-                <input type="number" class="form-control" id="cpf" name="cpf">
+                <input type="number" class="form-control" id="cpf" name="cpf" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="telefone" name="telefone" class="form-label">Telefone</label>
-                <input type="number" class="form-control" id="telefone" name="telefone">
+                <input type="number" class="form-control" id="telefone" name="telefone" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="cep" name="cep" class="form-label">CEP</label>
-                <input type="number" class="form-control" id="cep" name="cep">
+                <input type="number" class="form-control" id="cep" name="cep" required>
               </td>
               <td>
                 <label for="numero" name="numero" class="form-label">Nº</label>
-                <input type="number" class="form-control" id="numero" name="numero">
+                <input type="number" class="form-control" id="numero" name="numero" required>
               </td>
             </tr>
           </table>
-
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -463,7 +569,7 @@
 <div class="modal fade" id="exampleModal7" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form action="Editar/EditarServico.php" method="post">
+      <form action="editar/editarPet.php" method="post">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Editar Pet</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -473,35 +579,65 @@
           <table>
             <tr>
               <td>
-                <label for="pet_edit" name="pet_edit" class="form-label">Selecione o Pet</label>
-                <select class="form-select" name="pet_edit" id="pet_edit">
-                  <option value="">A</option>
-                  <option value="">B</option>
+                <label for="pet_edit" name="pet_edit" class="form-label">Selecione o Pet ao qual será editado</label>
+                <select class="form-select" name="pet_edit" id="pet_edit" required>
+                <?php
+                $com_servico = "SELECT * FROM agendamento";
+                  $id_servico = mysqli_query($conexao, $com_servico);
+                  
+                  while ($id_ser = mysqli_fetch_assoc($id_servico)) {
+
+                  $id_pet = $id_ser['pets_id'];
+
+                  $listar_por_pets = "SELECT * FROM pets WHERE id = '$id_pet'";
+                  $nome_pet = mysqli_query($conexao, $listar_por_pets);
+                  $nom_pet = mysqli_fetch_assoc($nome_pet);
+
+                  $list_pets = $nom_pet['nome'];
+
+                  $listar_por_cli = "SELECT * FROM clientes WHERE id = ".$nom_pet['clientes_id'];
+                  $nome_cli = mysqli_query($conexao, $listar_por_cli);
+                  $nom_cli = mysqli_fetch_assoc($nome_cli);
+
+                  $nom_client = $nom_cli['nomeCompleto'];
+                  
+
+                  echo "<option value='$id_pet'>$nom_client - $list_pets</option>";
+                  }?>
                 </select>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="nome" name="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome">
+                <input type="text" class="form-control" id="nome" name="nome" required>
               </td>
               <td>
                 <label for="raca" name="raca" class="form-label">Raça</label>
-                <input type="text" class="form-control" id="raca" name="raca">
+                <input type="text" class="form-control" id="raca" name="raca" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="raca" name="raca" class="form-label">Data de Nascimento</label>
-                <input type="date" class="form-control" id="raca" name="raca">
+                <input type="date" class="form-control" id="raca" name="dataNasc" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="nomeCliente" name="nomeCliente" class="form-label">Nome do Cliente</label>
-                <select class="form-select" name="nomeCliente" id="nomeCliente">
-                  <option value="">A</option>
-                  <option value="">B</option>
+                <select class="form-select" name="nomeCliente" id="nomeCliente" required>
+                  <?php 
+                  $com_nomCli = "SELECT * FROM clientes";
+                  $res_nomCli = mysqli_query($conexao, $com_nomCli);
+                  while ($nome_cliente = mysqli_fetch_assoc($res_nomCli)){
+
+                  $id_cli = $nome_cliente['id'];
+                  $nome_client = $nome_cliente['nomeCompleto'];
+
+                  echo "<option value='$id_cli'>$nome_client</option>";
+                  }
+                  ?>
                 </select>
               </td>
             </tr>
@@ -520,7 +656,7 @@
 <div class="modal fade" id="exampleModal8" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form action="Editar/EditarServico.php" method="post">
+      <form action="editar/editarFuncionario.php" method="post">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Editar Funcionário</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -530,28 +666,37 @@
             <tr>
               <td>
                 <label for="funcionario_edit" name="funcionario_edit" class="form-label">Selecione o Funcionário</label>
-                <select class="form-select" name="funcionario_edit" id="funcionario_edit">
-                  <option value="">A</option>
-                  <option value="">B</option>
+                <select class="form-select" name="funcionario_edit" id="funcionario_edit" required>
+                  <?php
+                  $com_fun = "SELECT * FROM funcionarios";
+                  $res_fun = mysqli_query($conexao, $com_fun);
+                  while ($fun = mysqli_fetch_assoc($res_fun)) {
+                  
+                  $nome_fun = $fun['nomeCompleto'];
+                  $id_fun = $fun['id'];
+
+                  echo "<option value='$id_fun'>$nome_fun</option>";
+                  }
+                  ?>
                 </select>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="nomeFuncionario" name="nomeFuncionario" class="form-label">Nome Completo</label>
-                <input type="text" class="form-control" id="nomeFuncionario" name="nomeFuncionario">
+                <input type="text" class="form-control" id="nomeFuncionario" name="nomeFuncionario" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="cpfFuncionario" name="cpfFuncionario" class="form-label">CPF</label>
-                <input type="text" class="form-control" id="cpfFuncionario" name="cpfFuncionario">
+                <input type="number" class="form-control" id="cpfFuncionario" name="cpfFuncionario" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="telefoneFuncionario" name="telefoneFuncionario" class="form-label">Telefone</label>
-                <input type="number" class="form-control" id="telefoneFuncionario" name="telefoneFuncionario">
+                <input type="number" class="form-control" id="telefoneFuncionario" name="telefoneFuncionario" required>
               </td>
             </tr>
           </table>
@@ -569,11 +714,64 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Multas</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
-        aaaa
+      <div class="modal-body" style="height: 300px; overflow-y: scroll;">
+      <table class='text-center'> 
+          <tr class='m-5'>
+            <td class='pe-3'>Cliente</td>
+            <td class='pe-3'>Telefone</td>
+            <td class='pe-3'>Serviço</td>
+            <td class='pe-3'>Multa</td>
+        </tr>
+        <?php 
+        $c_multas = "SELECT * FROM multa";
+        $res_multas = mysqli_query($conexao, $c_multas);
+        while ($multas = mysqli_fetch_assoc($res_multas)) {
+        
+        $valor = $multas['valor'];
+        $id_ag = $multas['agendamento_id'];
+
+        $c_ag = "SELECT * FROM agendamento WHERE id = '$id_ag'";
+        $res_ag = mysqli_query($conexao, $c_ag);
+        $ag = mysqli_fetch_assoc($res_ag);
+
+        $servicos_id = $ag['servicos_id'];
+        $pets_id = $ag['pets_id'];
+
+        $ser = "SELECT * FROM servicos WHERE id = '$servicos_id'";
+        $res_ser = mysqli_query($conexao, $ser);
+        $serv = mysqli_fetch_assoc($res_ser);
+
+        $nome_servic = $serv['descricao'];
+
+        $c_nome = "SELECT * FROM pets WHERE id = '$pets_id'";
+        $res_nome = mysqli_query($conexao, $c_nome);
+        $pt = mysqli_fetch_assoc($res_nome);
+
+        $nome_usu = $pt['clientes_id'];
+
+        $nome_usuario = "SELECT * FROM clientes WHERE id = '$nome_usu'";
+        $res_usuario = mysqli_query($conexao, $nome_usuario);
+        $nm = mysqli_fetch_assoc($res_usuario);
+
+        $nm_usuario = $nm['nomeCompleto'];
+        $nr_usuario = $nm['numero'];
+
+       
+
+
+        echo "
+          <tr class='m-5'>
+            <td class='pe-3'>$nm_usuario</td>
+            <td class='pe-3'>$nr_usuario</td>
+            <td class='pe-3'>$nome_servic</td>
+            <td class='pe-3'>$valor</td>
+          </tr>";
+        }
+        ?>
+      </table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
