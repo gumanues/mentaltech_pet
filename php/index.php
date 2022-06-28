@@ -396,7 +396,6 @@
   </div>
 </div>
 
-
 <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -709,6 +708,310 @@
     </div>
   </div>
 </div>
+<!-- -------------------------------------------------------- -->
+<div class="modal fade" id="exampleModal9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="excluir/excluirServico.php" method="post">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Deletar Serviço</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <td>
+              <label for="servico_excluir" name="servico_excluir" class="form-label">Selecione o serviço</label>
+                <select class="form-select" name="servico_excluir" id="servico_excluir" required>
+                  <?php  
+                  $com_servico = "SELECT * FROM agendamento";
+                  $id_servico = mysqli_query($conexao, $com_servico);
+                  
+                  while ($id_ser = mysqli_fetch_assoc($id_servico)) {
+
+                  $id_pet = $id_ser['pets_id'];
+
+                  $listar_por_pets = "SELECT * FROM pets WHERE id = '$id_pet'";
+                  $nome_pet = mysqli_query($conexao, $listar_por_pets);
+                  $nom_pet = mysqli_fetch_assoc($nome_pet);
+
+                  $list_pets = $nom_pet['nome'];
+
+                  $listar_por_cli = "SELECT * FROM clientes WHERE id = ".$nom_pet['clientes_id'];
+                  $nome_cli = mysqli_query($conexao, $listar_por_cli);
+                  $nom_cli = mysqli_fetch_assoc($nome_cli);
+
+                  $nom_client = $nom_cli['nomeCompleto'];
+                  
+
+                  echo "<option value='$id_pet'>$nom_client - $list_pets</option>";
+                
+                  }?>
+                </select>
+              </td>
+            </tr>       
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="submit" class="btn btn-primary">Excluir</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal10" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="excluir/excluirCliente.php" method="post">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Deletar Cliente</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <td>
+                <label for="cliente_excluir" name="cliente_excluir" class="form-label">Selecione o cliente</label>
+                <select class="form-select" name="cliente_excluir" id="cliente_excluir" required>
+                  <?php 
+                  $com_client = "SELECT * FROM clientes";
+                  $res_clienes = mysqli_query($conexao, $com_client);
+                  while ($clientes = mysqli_fetch_assoc($res_clienes)) {
+                  
+                  $id_cliente = $clientes['id'];
+                  $nom_cliente = $clientes['nomeCompleto'];
+
+                  echo "<option value='$id_cliente'>$nom_cliente</option>";
+                  
+                  }?>
+                </select>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="submit" class="btn btn-primary">Excluir</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal11" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="excluir/excluirPet.php" method="post">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Deletar Pet</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <td>
+                <label for="pet_excluir" name="pet_excluir" class="form-label">Selecione o Pet</label>
+                <select class="form-select" name="pet_excluir" id="pet_excluir" required>
+                <?php
+                $com_servico = "SELECT * FROM agendamento";
+                  $id_servico = mysqli_query($conexao, $com_servico);
+                  
+                  while ($id_ser = mysqli_fetch_assoc($id_servico)) {
+
+                  $id_pet = $id_ser['pets_id'];
+
+                  $listar_por_pets = "SELECT * FROM pets WHERE id = '$id_pet'";
+                  $nome_pet = mysqli_query($conexao, $listar_por_pets);
+                  $nom_pet = mysqli_fetch_assoc($nome_pet);
+
+                  $list_pets = $nom_pet['nome'];
+
+                  $listar_por_cli = "SELECT * FROM clientes WHERE id = ".$nom_pet['clientes_id'];
+                  $nome_cli = mysqli_query($conexao, $listar_por_cli);
+                  $nom_cli = mysqli_fetch_assoc($nome_cli);
+
+                  $nom_client = $nom_cli['nomeCompleto'];
+                  
+
+                  echo "<option value='$id_pet'>$nom_client - $list_pets</option>";
+                  }?>
+                </select>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="submit" class="btn btn-primary">Excluir</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal12" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="excluir/excluirFuncionario.php" method="post">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Deletar Funcionário</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <td>
+                <label for="funcionario_excluir" name="funcionario_excluir" class="form-label">Selecione o Funcionário</label>
+                <select class="form-select" name="funcionario_excluir" id="funcionario_excluir" required>
+                  <?php
+                  $com_fun = "SELECT * FROM funcionarios";
+                  $res_fun = mysqli_query($conexao, $com_fun);
+                  while ($fun = mysqli_fetch_assoc($res_fun)) {
+                  
+                  $nome_fun = $fun['nomeCompleto'];
+                  $id_fun = $fun['id'];
+
+                  echo "<option value='$id_fun'>$nome_fun</option>";
+                  }
+                  ?>
+                </select>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="submit" class="btn btn-primary">Excluir</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- ------------------------------------------------------- -->
+<div class="modal fade" id="exampleModal13" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="cadastrar/cadastrarModalidade.php" method="post">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Adicionar Descrição de Serviço</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <td>
+                <label for="descricaoServico" name="descricaoServico" class="form-label">Descrição do Serviço</label>
+                <input type="text" class="form-control" id="descricaoServico" name="descricaoServico" required>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="valorServico" name="valorServico" class="form-label">Valor do Serviço</label>
+                <input type="number" class="form-control" placeholder="350,00 R$" id="valorServico" name="valorServico" required>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal14" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="editar/editarModalidade.php" method="post">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar Descrição de Serviço</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <td>
+                <label for="servico_edit" name="servico_edit" class="form-label">Selecione o Serviço</label>
+                <select class="form-select" name="servico_edit" id="servico_edit" required>
+                  <?php
+                  $com_ser = "SELECT * FROM servicos";
+                  $res_ser = mysqli_query($conexao, $com_ser);
+                  while ($ser = mysqli_fetch_assoc($res_ser)) {
+                  
+                  $nome_ser = $ser['descricao'];
+                  $id_ser = $ser['id'];
+
+                  echo "<option value='$id_ser'>$nome_ser</option>";
+                  }
+                  ?>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="descricaoServico" name="descricaoServico" class="form-label">Descrição do Serviço</label>
+                <input type="text" class="form-control" id="descricaoServico" name="descricaoServico" required>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="valorServico" name="valorServico" class="form-label">Valor do Serviço</label>
+                <input type="number" class="form-control" placeholder="350,00 R$" id="valorServico" name="valorServico" required>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="submit" class="btn btn-primary">Editar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModal15" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="excluir/excluirModalidade.php" method="post">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Deletar descrição do serviço</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <td>
+              <label for="servico_excluir" name="servico_excluir" class="form-label">Selecione o Serviço</label>
+                <select class="form-select" name="servico_excluir" id="servico_excluir" required>
+                  <?php
+                  $com_ser = "SELECT * FROM servicos";
+                  $res_ser = mysqli_query($conexao, $com_ser);
+                  while ($ser = mysqli_fetch_assoc($res_ser)) {
+                  
+                  $nome_ser = $ser['descricao'];
+                  $id_ser = $ser['id'];
+
+                  echo "<option value='$id_ser'>$nome_ser</option>";
+                  }
+                  ?>
+                </select>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="submit" class="btn btn-primary">Deletar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -724,6 +1027,8 @@
             <td class='pe-3'>Telefone</td>
             <td class='pe-3'>Serviço</td>
             <td class='pe-3'>Multa</td>
+            <td class='pe-3'>Editar</td>
+            <td class='pe-3'>Excluir</td>
         </tr>
         <?php 
         $c_multas = "SELECT * FROM multa";
@@ -731,6 +1036,7 @@
         while ($multas = mysqli_fetch_assoc($res_multas)) {
         
         $valor = $multas['valor'];
+        $id_multa = $multas['id'];
         $id_ag = $multas['agendamento_id'];
 
         $c_ag = "SELECT * FROM agendamento WHERE id = '$id_ag'";
@@ -762,20 +1068,91 @@
        
 
 
-        echo "
-          <tr class='m-5'>
-            <td class='pe-3'>$nm_usuario</td>
-            <td class='pe-3'>$nr_usuario</td>
-            <td class='pe-3'>$nome_servic</td>
-            <td class='pe-3'>$valor</td>
-          </tr>";
+        echo '
+          <tr class="m-5">
+            <td class="pe-3">'.$nm_usuario.'</td>
+            <td class="pe-3">'.$nr_usuario.'</td>
+            <td class="pe-3">'.$nome_servic.'</td>
+            <td class="pe-3">'.$valor.'</td>
+            <td class="pe-3"><button class="btn btn-link" data-bs-toggle="modal"
+            data-bs-target="#exampleModalMulta"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+            </svg></button></td>
+            <td class="pe-3"><form action="excluir/excluirMulta.php" method="post"><input type="hidden" name="multa_excluir" value='.$id_multa.'><button type="submit" class="btn btn-link"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+            </svg></button></form></td>
+          </tr>';
         }
-        ?>
-      </table>
+        // <input type="hidden" name="multa_edit" value='.$id_multa.'>
+
+        ?> 
+      </table> 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalMulta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="editar/editarMulta.php" method="post">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Editar Multa</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <td>
+                <label for="multa_edit" name="multa_edit" class="form-label">Selecione o cliente</label>
+                <select class="form-select" name="multa_edit" id="multa_edit" required>
+                  <?php 
+                  $com_multa = "SELECT * FROM multa";
+                  $res_clienes = mysqli_query($conexao, $com_multa);
+                  while ($multaes = mysqli_fetch_assoc($res_clienes)) {
+                  
+                  $id_multae = $multaes['agendamento_id'];
+                  $nom_multae = $multaes['valor'];
+
+                  $multa_find = "SELECT * FROM agendamento WHERE id = '$id_multae'";
+                  $res_petag = mysqli_query($conexao, $multa_find);
+                  $ag_find = mysqli_fetch_assoc($res_petag);
+                  $pet = $ag_find['pets_id'];
+
+                  $multa_pet = "SELECT * FROM pets WHERE id = '$pet'";
+                  $res_pet = mysqli_query($conexao, $multa_pet);
+                  $ag_pet = mysqli_fetch_assoc($res_pet);
+                  $petid = $ag_pet['clientes_id'];
+
+                  $multa_cli = "SELECT * FROM clientes WHERE id = '$petid'";
+                  $res_clien = mysqli_query($conexao, $multa_cli);
+                  $ag_cli = mysqli_fetch_assoc($res_clien);
+                  $clinome = $ag_cli['nomeCompleto'];
+
+                  echo "<option value='$id_multae'>$clinome</option>";
+                  
+                  }?>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="multa" name="multa" class="form-label">Valor</label>
+                <input type="number" class="form-control" id="multa" name="multa" required>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="submit" class="btn btn-primary">Editar</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -800,42 +1177,78 @@
     </table>
 </div>
 
-
+<?php 
+$comando_agendamento = "SELECT * FROM agendamento";
+$agendamentos = mysqli_query($conexao, $comando_agendamento);
+while ($a = mysqli_fetch_assoc($agendamentos)){
+?>
   <header>
     <div class="mt-2 card text-center">
       <div class="bg-light card-header">
         <ul class="nav nav-tabs card-header-tabs">
           <li class="nav-item">
-
             <div class="dropdown">
               <a class="nav-link text-dark active" aria-current="true" href="#" id="dropdownMenu2"
                 data-bs-toggle="dropdown" aria-expanded="false">
+<?php
 
-                #
+$comando_status = "SELECT * FROM agendamento WHERE id = 1";
+$res_status = mysqli_query($conexao, $comando_status);
+$status = mysqli_fetch_assoc($res_status);
+$stat = $status['status'];
 
+if ($stat == 0) {
+echo'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+class="bi bi-clock" viewBox="0 0 16 16">
+<path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+</svg>';
+} else if ($stat == 1) {
+echo'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+class="bi bi-arrow-down-right-circle" viewBox="0 0 16 16">
+<path fill-rule="evenodd"
+  d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.854 5.146a.5.5 0 1 0-.708.708L9.243 9.95H6.475a.5.5 0 1 0 0 1h3.975a.5.5 0 0 0 .5-.5V6.475a.5.5 0 1 0-1 0v2.768L5.854 5.146z" />
+</svg>';  
+} else if ($stat == 2) {
+echo'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+<path
+  d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
+</svg>';
+} else if ($stat == 3){
+echo'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+class="bi bi-check-circle" viewBox="0 0 16 16">
+<path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+<path
+  d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+</svg>';
+}
+                   
+?>
 
               </a>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><button class="dropdown-item" type="button">
-
+                <li><form action="editar/editarStatus" method="post"><button class="dropdown-item" type="button">
+                <input type="hidden" value="0">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-clock" viewBox="0 0 16 16">
                       <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
                       <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
                     </svg>
                     Em aberto
-                  </button></li>
-                <li><button class="dropdown-item" type="button">
-
+                  </button></form></li>
+                <li><form action="editar/editarStatus" method="post"><button class="dropdown-item" type="button">
+                <input type="hidden" value="1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-arrow-down-right-circle" viewBox="0 0 16 16">
                       <path fill-rule="evenodd"
                         d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.854 5.146a.5.5 0 1 0-.708.708L9.243 9.95H6.475a.5.5 0 1 0 0 1h3.975a.5.5 0 0 0 .5-.5V6.475a.5.5 0 1 0-1 0v2.768L5.854 5.146z" />
                     </svg>
                     Em andamento
-                  </button></li>
-                <li><button class="dropdown-item" type="button">
-
+                  </button></form></li>
+                <li><form action="editar/editarStatus" method="post"><button class="dropdown-item" type="button">
+                <input type="hidden" value="2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-exclamation-circle" viewBox="0 0 16 16">
                       <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -843,9 +1256,9 @@
                         d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
                     </svg>
                     Cancelado
-                  </button></li>
-                <li><button class="dropdown-item" type="button">
-
+                  </button></form></li>
+                <li><form action="editar/editarStatus" method="post"><button class="dropdown-item" type="button">
+                <input type="hidden" value="3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-check-circle" viewBox="0 0 16 16">
                       <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -853,7 +1266,7 @@
                         d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
                     </svg>
                     Concluido
-                  </button></li>
+                  </button></form></li>
               </ul>
             </div>
 
@@ -931,7 +1344,7 @@
       </div>
     </div>
   </header>
-
+<?php } ?>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
