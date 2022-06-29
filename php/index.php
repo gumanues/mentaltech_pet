@@ -17,36 +17,211 @@
   <title>Petshop</title>
 </head> 
 
-<!--  -->
+<!--Cadastros erros -->
 <div id="alertas">
-    <?php if(isset($_GET['retorno'])==true && $_GET['retorno']==0){ ?>
+    <?php if(isset($_GET['retorno'])==true && $_GET['retorno']==1){ ?>
     <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <span>Houve algum problema cadastrar o tipo de compromisso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-    <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==1){ ?>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <span>Houve algum problema cadastrar o tipo de compromisso!</span>
+        <span>Houve algum problema cadastrar o cliente!</span>
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
     <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==2){ ?>
-	<div class="alert alert-success alert-dismissible fade show" role="alert">
-        <span>Tipo de compromisso excluído com sucesso!</span>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <span>Houve algum problema cadastrar o funcionario!</span>
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==3){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <span>Não é possível excluir um tipo de compromisso que possui compromissos!</span>
+    <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==3){ ?>
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <span>Houve algum problema cadastrar a modalidade!</span>
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==4){ ?>
-	<div class="alert alert-success alert-dismissible fade show" role="alert">
-        <span>Tipo de compromisso editado com sucesso!</span>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <span>Houve algum problema cadastrar a multa!</span>
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==5){ ?>
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <span>Houve algum problema cadastrar o pet!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==6){ ?>
 	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Houve algum problema editar o tipo de compromisso!</span>
+		<span>Houve algum problema cadastrar serviço!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    <!-- Cadastros sucesso -->
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==1.1){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Cliente cadastrado com sucesso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==2.2){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Funcionario cadastrado com sucesso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==3.3){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Modalidade cadastrado com sucesso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==4.4){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Multa</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==5.5){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Pet cadastrado com sucesso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==6.6){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Serviço cadastrado com sucesso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    <!-- Editar erro -->
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==7){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Houve algum problema editar o Cliente!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==8){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Houve algum problema editar o Funcionário!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==9){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Houve algum problema editar a Modalidade Serviço!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==10){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Houve algum problema editar a Multa!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==11){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Houve algum problema editar o Pet!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==12){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Houve algum problema editar o Serviço!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==13){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Houve algum problema editar o Status!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div> 
+    <!-- editar sucesso -->
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==7.7){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Cliente editado com sucesso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==8.8){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Funcionário editado com sucesso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==9.9){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Modalidade editado com sucesso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==10.10){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Multa editado com sucesso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==11.11){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Pet editado com sucesso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==12.12){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Serviço editado com sucesso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==13.13){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Status editado com sucesso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    <!-- excluir erro -->
+    <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']== 14){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Houve algum problema excluir o Cliente!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']== 15){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Houve algum problema excluir o Funcionário!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']== 16){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Houve algum problema excluir a Modalidade Serviço!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']== 17){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Houve algum problema excluir a Multa!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==18){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Houve algum problema excluir o Pet!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==19){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Houve algum problema excluir o Serviço!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==20){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Houve algum problema excluir o Status!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div> 
+    <!-- excluir sucesso -->
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==14.14){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Cliente excluido com sucesso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==15.15){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Funcionário excluido com sucesso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==16.16){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Modalidade excluido com sucesso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==17.17){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Multa excluido com sucesso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==18.18){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Pet excluido com sucesso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==19.19){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Serviço excluido com sucesso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==20.20){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Status excluido com sucesso!</span>
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 
@@ -1351,9 +1526,8 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
                     </svg>
                     Em andamento
                   </button></form></li>
-                <li><form action="editar/editarStatus.php" method="post"><button class="dropdown-item" type="submit">
-                <input type="hidden" name="status" value="2">
-                <input type="hidden" name="edit_status" value="<?=$z['id']?>">
+                <li><button class="dropdown-item" data-bs-toggle="modal"
+                    data-bs-target="#exampleModalMulta1">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-exclamation-circle" viewBox="0 0 16 16">
                       <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -1361,7 +1535,7 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
                         d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
                     </svg>
                     Cancelado
-                  </button></form></li>
+                  </button></li>
                 <li><form action="editar/editarStatus.php" method="post"><button class="dropdown-item" type="submit">
                 <input type="hidden" name="status" value="3">
                 <input type="hidden" name="edit_status" value="<?=$z['id']?>">
@@ -1375,11 +1549,36 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
                   </button></form></li>
               </ul>
             </div>
-
-
-
-
             </a>
+
+            <div class="modal fade" id="exampleModalMulta1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <form action="cadastrar/cadastrarMulta.php" method="post">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Gerar Multa</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <table>
+                      <tr>
+                        <td>
+                          <label for="multa" name="multa" class="form-label">Valor</label>
+                          <input type="number" class="form-control" id="multa" name="multa" required>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                  <input type="hidden" name="status" value="2">
+                  <input type="hidden" name="edit_status" value="<?=$z['id']?>">
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="submit" class="btn btn-primary">Editar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
 
           </li>
           <li class="nav-item">
