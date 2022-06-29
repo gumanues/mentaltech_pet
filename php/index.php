@@ -1298,7 +1298,6 @@
             </svg></button></form></td>
           </tr>';
         }
-        // <input type="hidden" name="multa_edit" value='.$id_multa.'>
 
         ?> 
       </table> 
@@ -1398,66 +1397,35 @@
 </div>
 
 <?php 
-$comando = "SELECT * FROM `agendamento` ORDER BY `agendamento`.`id` DESC";
+$comando = "SELECT * FROM agendamento A 
+INNER JOIN servicos S on S.id = A.servicos_id
+INNER JOIN funcionarios F ON F.id = A.funcionarios_id
+INNER JOIN pets P ON P.id = A.pets_id
+INNER JOIN clientes C ON C.id = P.clientes_id";
 
-if(isset($_GET['filtrar']) && $_GET['filtrar'] == "ASC") {
-  $comando = "SELECT * FROM `agendamento` ORDER BY `agendamento`.`id` DESC";
-}
 if(isset($_GET['filtrar']) && $_GET['filtrar'] == "DESC") {
-  $comando = "SELECT * FROM `agendamento` ORDER BY `agendamento`.`id` ASC";
+  $comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`id` DESC";
+}
+if(isset($_GET['filtrar']) && $_GET['filtrar'] == "ASC") {
+  $comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`id` ASC";
 }
 
 if(isset($_GET['pesquisa']) && $_GET['pesquisa'] != ""){
 
   $pesquisa = $_GET['pesquisa'];
 
-  $comando_clientes1 = "SELECT * FROM clientes WHERE nomeCompleto LIKE '".$pesquisa."%'";
-  $res_clientes1 = mysqli_query($conexao, $comando_clientes1);
-  $c1 = mysqli_fetch_assoc($res_clientes1);
+$comando = "SELECT * FROM agendamento A 
+INNER JOIN servicos S on S.id = A.servicos_id
+INNER JOIN funcionarios F ON F.id = A.funcionarios_id
+INNER JOIN pets P ON P.id = A.pets_id
+INNER JOIN clientes C ON C.id = P.clientes_id
+WHERE C.nomeCompleto LIKE '".$pesquisa."%'";
 
-  $comando_pets1 = "SELECT * FROM pets WHERE clientes_id = ".$c1['id'];
-  $res_pets1 = mysqli_query($conexao, $comando_pets1);
-  $p1 = mysqli_fetch_assoc($res_pets1);
 
-  $comando_agendamento = "SELECT * FROM agendamento WHERE pets_id = ".$p1['id'];
-  $res_agendamen=mysqli_query($conexao, $comando_agendamento);
-  $z1 = mysqli_fetch_assoc($res_agendamen);
-
-  $comando_funcionarios1 = "SELECT * FROM funcionarios WHERE id = ".$z1['funcionarios_id'];
-  $res_funcionarios1 = mysqli_query($conexao, $comando_funcionarios1);
-  $f1 = mysqli_fetch_assoc($res_funcionarios1);
-  //
-  $comando_servicos1 = "SELECT * FROM servicos WHERE id = ".$z1['servicos_id'];
-  $res_servicos1 = mysqli_query($conexao, $comando_servicos1);
-  $s1 = mysqli_fetch_assoc($res_servicos1);
-
-  $comando="SELECT * FROM agendamento WHERE pets_id = ".$p1['id'];
-// 
 }
 
-
 $resultado=mysqli_query($conexao, $comando);
-
 while($z = mysqli_fetch_assoc($resultado)){
-
-
-// 
-$comando_pets = "SELECT * FROM pets WHERE id = ".$z['pets_id'];
-$res_pets = mysqli_query($conexao, $comando_pets);
-$p = mysqli_fetch_assoc($res_pets);
-
-$comando_clientes = "SELECT * FROM clientes WHERE id = ".$p['clientes_id'];
-$res_clientes = mysqli_query($conexao, $comando_clientes);
-$c = mysqli_fetch_assoc($res_clientes);
-// 
-$comando_funcionarios = "SELECT * FROM funcionarios WHERE id = ".$z['funcionarios_id'];
-$res_funcionarios = mysqli_query($conexao, $comando_funcionarios);
-$f = mysqli_fetch_assoc($res_funcionarios);
-//
-$comando_servicos = "SELECT * FROM servicos WHERE id = ".$z['servicos_id'];
-$res_servicos = mysqli_query($conexao, $comando_servicos);
-$s = mysqli_fetch_assoc($res_servicos);
-
 
 
 ?>
@@ -1612,21 +1580,21 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
         </table>
         <table>
           <tr>
-            <td><p class="card-text"><b>Cliente: </b><?=$c['nomeCompleto']?></p></td>
+            <td><p class="card-text"><b>Cliente: </b><?=$z['nomeCompleto']?></p></td>
           </tr>
           <tr>
-            <td><p class="card-text"><b>Telefone: </b><?=$c['telefone']?></p></td>
+            <td><p class="card-text"><b>Telefone: </b><?=$z['telefone']?></p></td>
           </tr>
         </table>
         <table>
           <tr>
-            <td><p class="card-text"><b>Raça e/ou nome do Pet: </b><?=$p['nome']. ' - ' . $p['raca']?></p></td>
+            <td><p class="card-text"><b>Raça e/ou nome do Pet: </b><?=$z['nome']. ' - ' . $z['raca']?></p></td>
           </tr>
           <tr>
-            <td><p class="card-text"><b>Serviço: </b><?=$s['descricao']?></p></td>
+            <td><p class="card-text"><b>Serviço: </b><?=$z['descricao']?></p></td>
           </tr>
           <tr>
-            <td><p class="card-text"><b>Funcionário dirigente: </b><?=$f['nomeCompleto']?></p></td>
+            <td><p class="card-text"><b>Funcionário dirigente: </b><?=$z['nomeCompleto']?></p></td>
           </tr>
         </table>
 
