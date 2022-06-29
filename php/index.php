@@ -233,11 +233,7 @@
 <nav class="navbar text-light bg-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand text-light">Petshop</a>
-    <form action="index.php" method="GET" class="d-flex" role="pesquisa">
-      <input class="form-control me-2" type="pesquisa" name="pesquisa" aria-label="pesquisa">
-      <button class="btn btn-outline-light" type="submit">Pesquisar</button>
-    </form>
-    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+    <button class="navbar-toggler bg-light bg-opacity-75" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
       aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -248,7 +244,10 @@
         <button type="button" class="btn-close bg-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-
+      <form action="index.php" method="GET" class="d-flex" role="pesquisa">
+      <input class="form-control me-2" type="pesquisa" name="pesquisa" aria-label="pesquisa">
+      <button class="btn btn-outline-light" type="submit">Pesquisar</button>
+    </form>
         <div>
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item dropdown">
