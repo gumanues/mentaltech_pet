@@ -7,3 +7,4 @@ $nomeCliente = $_POST['nomeCliente'];
 
 $comando = "INSERT INTO `pets` (`id`, `nome`, `raca`, `dataNasc`, `clientes_id`) VALUES (NULL, '$nome', '$raca', '$dataNasc', '$nomeCliente')";
 mysqli_query($conexao, $comando);
+echo "<script>history.go(-1);</script>";

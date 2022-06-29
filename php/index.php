@@ -15,12 +15,51 @@
     }
   </style>
   <title>Petshop</title>
-</head>
+</head> 
+
+<!--  -->
+<div id="alertas">
+    <?php if(isset($_GET['retorno'])==true && $_GET['retorno']==0){ ?>
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <span>Houve algum problema cadastrar o tipo de compromisso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==1){ ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <span>Houve algum problema cadastrar o tipo de compromisso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==2){ ?>
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <span>Tipo de compromisso excluído com sucesso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==3){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <span>Não é possível excluir um tipo de compromisso que possui compromissos!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==4){ ?>
+	<div class="alert alert-success alert-dismissible fade show" role="alert">
+        <span>Tipo de compromisso editado com sucesso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==5){ ?>
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		<span>Houve algum problema editar o tipo de compromisso!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+	<?php } ?>
+</div>
+<!--  -->
+
+
 <nav class="navbar text-light bg-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand text-light">Petshop</a>
-    <form class="d-flex" role="search">
-      <input class="form-control me-2" type="search" aria-label="Search">
+    <form action="index.php" method="GET" class="d-flex" role="pesquisa">
+      <input class="form-control me-2" type="pesquisa" name="pesquisa" aria-label="pesquisa">
       <button class="btn btn-outline-light" type="submit">Pesquisar</button>
     </form>
     <button class="navbar-toggler bg-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -1163,24 +1202,90 @@
     <table>
       <tr>
         <td>
-          <label style="margin-top: 5px;" for="filtrar" name="filtrar" class="form-label">Filtrar por <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
-            <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"/>
-          </svg> </label>
+          <label style="margin-top: 5px;" for="filtrar" name="filtrar" class="form-label">Filtrar por </label>
           </td>
           <td>
+            <div>
+            <form action="index.php" method="get">
           <select class="form-select" name="filtrar" id="filtrar">
-            <option value="">A</option>
-            <option value="">B</option>
+            <option value="ASC">Filtrar por ordem crescente</option>
+            <option value="DESC">Filtrar por ordem decrescente</option>
           </select>
+          </td>
+          <td>
+          <button class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
+            <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"/>
+          </svg></button>
+          </form>
+          </div>
         </td>
       </tr>
     </table>
 </div>
 
 <?php 
-$comando_agendamento = "SELECT * FROM agendamento";
-$agendamentos = mysqli_query($conexao, $comando_agendamento);
-while ($a = mysqli_fetch_assoc($agendamentos)){
+$comando = "SELECT * FROM `agendamento` ORDER BY `agendamento`.`id` DESC";
+
+if(isset($_GET['filtrar']) && $_GET['filtrar'] == "ASC") {
+  $comando = "SELECT * FROM `agendamento` ORDER BY `agendamento`.`id` DESC";
+}
+if(isset($_GET['filtrar']) && $_GET['filtrar'] == "DESC") {
+  $comando = "SELECT * FROM `agendamento` ORDER BY `agendamento`.`id` ASC";
+}
+
+if(isset($_GET['pesquisa']) && $_GET['pesquisa'] != ""){
+
+  $pesquisa = $_GET['pesquisa'];
+
+  $comando_clientes1 = "SELECT * FROM clientes WHERE nomeCompleto LIKE '".$pesquisa."%'";
+  $res_clientes1 = mysqli_query($conexao, $comando_clientes1);
+  $c1 = mysqli_fetch_assoc($res_clientes1);
+
+  $comando_pets1 = "SELECT * FROM pets WHERE clientes_id = ".$c1['id'];
+  $res_pets1 = mysqli_query($conexao, $comando_pets1);
+  $p1 = mysqli_fetch_assoc($res_pets1);
+
+  $comando_agendamento = "SELECT * FROM agendamento WHERE pets_id = ".$p1['id'];
+  $res_agendamen=mysqli_query($conexao, $comando_agendamento);
+  $z1 = mysqli_fetch_assoc($res_agendamen);
+
+  $comando_funcionarios1 = "SELECT * FROM funcionarios WHERE id = ".$z1['funcionarios_id'];
+  $res_funcionarios1 = mysqli_query($conexao, $comando_funcionarios1);
+  $f1 = mysqli_fetch_assoc($res_funcionarios1);
+  //
+  $comando_servicos1 = "SELECT * FROM servicos WHERE id = ".$z1['servicos_id'];
+  $res_servicos1 = mysqli_query($conexao, $comando_servicos1);
+  $s1 = mysqli_fetch_assoc($res_servicos1);
+
+  $comando="SELECT * FROM agendamento WHERE pets_id = ".$p1['id'];
+// 
+}
+
+
+$resultado=mysqli_query($conexao, $comando);
+
+while($z = mysqli_fetch_assoc($resultado)){
+
+
+// 
+$comando_pets = "SELECT * FROM pets WHERE id = ".$z['pets_id'];
+$res_pets = mysqli_query($conexao, $comando_pets);
+$p = mysqli_fetch_assoc($res_pets);
+
+$comando_clientes = "SELECT * FROM clientes WHERE id = ".$p['clientes_id'];
+$res_clientes = mysqli_query($conexao, $comando_clientes);
+$c = mysqli_fetch_assoc($res_clientes);
+// 
+$comando_funcionarios = "SELECT * FROM funcionarios WHERE id = ".$z['funcionarios_id'];
+$res_funcionarios = mysqli_query($conexao, $comando_funcionarios);
+$f = mysqli_fetch_assoc($res_funcionarios);
+//
+$comando_servicos = "SELECT * FROM servicos WHERE id = ".$z['servicos_id'];
+$res_servicos = mysqli_query($conexao, $comando_servicos);
+$s = mysqli_fetch_assoc($res_servicos);
+
+
+
 ?>
   <header>
     <div class="mt-2 card text-center">
@@ -1192,10 +1297,7 @@ while ($a = mysqli_fetch_assoc($agendamentos)){
                 data-bs-toggle="dropdown" aria-expanded="false">
 <?php
 
-$comando_status = "SELECT * FROM agendamento WHERE id = 1";
-$res_status = mysqli_query($conexao, $comando_status);
-$status = mysqli_fetch_assoc($res_status);
-$stat = $status['status'];
+$stat = $z['status'];
 
 if ($stat == 0) {
 echo'<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -1229,8 +1331,9 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
 
               </a>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><form action="editar/editarStatus" method="post"><button class="dropdown-item" type="button">
-                <input type="hidden" value="0">
+                <li><form action="editar/editarStatus.php" method="post"><button class="dropdown-item" type="submit">
+                <input type="hidden" name="status" value="0">
+                <input type="hidden" name="edit_status" value="<?=$z['id']?>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-clock" viewBox="0 0 16 16">
                       <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
@@ -1238,8 +1341,9 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
                     </svg>
                     Em aberto
                   </button></form></li>
-                <li><form action="editar/editarStatus" method="post"><button class="dropdown-item" type="button">
-                <input type="hidden" value="1">
+                <li><form action="editar/editarStatus.php" method="post"><button class="dropdown-item" type="submit">
+                <input type="hidden" name="status" value="1">
+                <input type="hidden" name="edit_status" value="<?=$z['id']?>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-arrow-down-right-circle" viewBox="0 0 16 16">
                       <path fill-rule="evenodd"
@@ -1247,8 +1351,9 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
                     </svg>
                     Em andamento
                   </button></form></li>
-                <li><form action="editar/editarStatus" method="post"><button class="dropdown-item" type="button">
-                <input type="hidden" value="2">
+                <li><form action="editar/editarStatus.php" method="post"><button class="dropdown-item" type="submit">
+                <input type="hidden" name="status" value="2">
+                <input type="hidden" name="edit_status" value="<?=$z['id']?>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-exclamation-circle" viewBox="0 0 16 16">
                       <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -1257,8 +1362,9 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
                     </svg>
                     Cancelado
                   </button></form></li>
-                <li><form action="editar/editarStatus" method="post"><button class="dropdown-item" type="button">
-                <input type="hidden" value="3">
+                <li><form action="editar/editarStatus.php" method="post"><button class="dropdown-item" type="submit">
+                <input type="hidden" name="status" value="3">
+                <input type="hidden" name="edit_status" value="<?=$z['id']?>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-check-circle" viewBox="0 0 16 16">
                       <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -1277,16 +1383,6 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
 
           </li>
           <li class="nav-item">
-            <a class="dropdown-item btn-primary nav-link text-dark" data-bs-toggle="modal"
-              data-bs-target="#exampleModal5" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                <path
-                  d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
-                <path fill-rule="evenodd"
-                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
-              </svg></a>
-          </li>
-          <li class="nav-item">
             <a type="button" class="dropdown-item btn-primary nav-link text-dark" data-bs-toggle="modal"
               data-bs-target="#exampleModal1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                 fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -1302,44 +1398,40 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
                   d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.6 11.85H0v3.999h.791v-1.342h.803c.287 0 .531-.057.732-.173.203-.117.358-.275.463-.474a1.42 1.42 0 0 0 .161-.677c0-.25-.053-.476-.158-.677a1.176 1.176 0 0 0-.46-.477c-.2-.12-.443-.179-.732-.179Zm.545 1.333a.795.795 0 0 1-.085.38.574.574 0 0 1-.238.241.794.794 0 0 1-.375.082H.788V12.48h.66c.218 0 .389.06.512.181.123.122.185.296.185.522Zm1.217-1.333v3.999h1.46c.401 0 .734-.08.998-.237a1.45 1.45 0 0 0 .595-.689c.13-.3.196-.662.196-1.084 0-.42-.065-.778-.196-1.075a1.426 1.426 0 0 0-.589-.68c-.264-.156-.599-.234-1.005-.234H3.362Zm.791.645h.563c.248 0 .45.05.609.152a.89.89 0 0 1 .354.454c.079.201.118.452.118.753a2.3 2.3 0 0 1-.068.592 1.14 1.14 0 0 1-.196.422.8.8 0 0 1-.334.252 1.298 1.298 0 0 1-.483.082h-.563v-2.707Zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638H7.896Z" />
               </svg></a>
           </li>
-
-          <li class="nav-item">
-            <a class="nav-link text-dark "><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                <path
-                  d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
-                <path fill-rule="evenodd"
-                  d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" />
-              </svg></a>
-          </li>
         </ul>
       </div>
       <div class="d-flex justify-content-evenly card-body">
         <table>
           <tr>
-            <td><p class="card-text"><b>Horario de início: </b></p></td>
+            <td><p class="card-text"><b>Data de cadastro: </b><?=$z['data']?></p></td>
           </tr>
           <tr>
-            <td><p class="card-text"><b>Horario de término: </b></p></td>
+            <td><p class="card-text"><b>Horario de início: </b><?=$z['horarioInicio']?></p></td>
           </tr>
           <tr>
-            <td><p class="card-text"><b>Cliente: </b></p></td>
-          </tr>
-          <tr>
-            <td><p class="card-text"><b>Telefone: </b></p></td>
+            <td><p class="card-text"><b>Horario de término: </b><?=$z['horarioFinal']?></p></td>
           </tr>
         </table>
         <table>
           <tr>
-            <td><p class="card-text"><b>Raça e/ou nome do Pet: </b></p></td>
+            <td><p class="card-text"><b>Cliente: </b><?=$c['nomeCompleto']?></p></td>
           </tr>
           <tr>
-            <td><p class="card-text"><b>Serviço: </b></p></td>
-          </tr>
-          <tr>
-            <td><p class="card-text"><b>Funcionário dirigente: </b></p></td>
+            <td><p class="card-text"><b>Telefone: </b><?=$c['telefone']?></p></td>
           </tr>
         </table>
+        <table>
+          <tr>
+            <td><p class="card-text"><b>Raça e/ou nome do Pet: </b><?=$p['nome']. ' - ' . $p['raca']?></p></td>
+          </tr>
+          <tr>
+            <td><p class="card-text"><b>Serviço: </b><?=$s['descricao']?></p></td>
+          </tr>
+          <tr>
+            <td><p class="card-text"><b>Funcionário dirigente: </b><?=$f['nomeCompleto']?></p></td>
+          </tr>
+        </table>
+
         <p class="card-text text-muted"></p>
       </div>
     </div>

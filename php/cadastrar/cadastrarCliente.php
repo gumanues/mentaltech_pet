@@ -9,3 +9,4 @@ $numero = $_POST['numero'];
 
 $comando = "INSERT INTO `clientes` (`id`, `nomeCompleto`, `email`, `cpf`, `telefone`, `CEP`, `numero`) VALUES (NULL, '$nomeCompleto', '$email', '$cpf', '$telefone', '$cep', '$numero')";
 mysqli_query($conexao, $comando);
+echo "<script>history.go(-1);</script>";

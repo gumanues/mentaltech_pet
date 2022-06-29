@@ -51,7 +51,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `petshop`.`usuario` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `usuario` VARCHAR(255) NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
   `senha` CHAR(32) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;

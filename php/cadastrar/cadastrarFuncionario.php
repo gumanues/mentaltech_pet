@@ -6,3 +6,4 @@ $telefoneFuncionario = $_POST['telefoneFuncionario'];
 
 $comando = "INSERT INTO `funcionarios` (`id`, `nomeCompleto`, `cpf`, `telefone`) VALUES (NULL, '$nomeFuncionario', '$cpfFuncionario', '$nomeFuncionario')";
 mysqli_query($conexao, $comando);
+echo "<script>history.go(-1);</script>";

@@ -10,5 +10,4 @@ $cliente_edit = $_POST['cliente_edit'];
 
 $comando = "UPDATE `clientes` SET `nomeCompleto` = '$nomeCompleto', `email` = '$email', `cpf` = '$cpf', `telefone` = '$telefone', `CEP` = '$cep', `numero` = '$numero' WHERE `clientes`.`id` = '$cliente_edit'";
 mysqli_query($conexao, $comando);
-
-echo "history.go(-1); </script>";
+echo "<script>history.go(-1);</script>";

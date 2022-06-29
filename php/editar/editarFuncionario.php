@@ -7,5 +7,4 @@ $funcionario_edit = $_POST ['funcionario_edit'];
 
 $comando = "UPDATE `funcionarios` SET `nomeCompleto` = '$nomeFuncionario', `cpf` = '$cpfFuncionario', `telefone` = '$telefoneFuncionario' WHERE `funcionarios`.`id` = '$funcionario_edit'";
 mysqli_query($conexao, $comando);
-
-echo "history.go(-1); </script>";
+echo "<script>history.go(-1);</script>";

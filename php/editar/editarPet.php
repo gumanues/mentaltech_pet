@@ -8,5 +8,4 @@ $pet_edit = $_POST ['pet_edit'];
 
 $comando = "UPDATE `pets` SET `nome` = '$nome', `raca` = '$raca', `dataNasc` = '$dataNasc', `clientes_id` = '$nomeCliente' WHERE `pets`.`id` = '$pet_edit'";
 mysqli_query($conexao, $comando);
-
-echo "history.go(-1); </script>";
+echo "<script>history.go(-1);</script>";
