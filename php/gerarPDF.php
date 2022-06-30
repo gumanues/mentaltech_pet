@@ -31,13 +31,13 @@ $comp = mysqli_fetch_assoc($resultado);
 // Create an instance of the class:
 $mpdf = new \Mpdf\Mpdf();
 
+
 $mpdf->WriteHTML('
+
+<h2>Comprovante</h2>
 <table>
 <tr>
-  <td><p class="card-text"><b>Data de cadastro: </b>'.$comp['data'].'</p></td>
-</tr>
-<tr>
-    <td><p class="card-text"><b>Horário: Das </b>'.$comp['horarioInicio'].'<b> até as </b>'.$comp['horarioFinal'].'</p></td>
+    <td><p class="card-text"><b>Horário: Das </b>'.$comp['horarioInicio'].'<b> as </b>'.$comp['horarioFinal'].'</p></td>
 </tr>
 </table>
 <table>
@@ -45,7 +45,7 @@ $mpdf->WriteHTML('
   <td><p class="card-text"><b>Cliente: </b>'.$comp['nomeCompleto'].'</p></td>
 </tr>
 <tr>
-  <td><p class="card-text"><b>Telefone: </b>'.$comp['telefone'].'</p></td>
+  <td><p class="card-text"><b>Telefone: </b>'.$comp['telefone'].'<hr></p></td>
 </tr>
 </table>
 <table>
@@ -59,9 +59,16 @@ $mpdf->WriteHTML('
   <td><p class="card-text"><b>Serviço: </b>'.$comp['descricao'].'</p></td>
 </tr>
 <tr>
-  <td><p class="card-text"><b>Funcionário dirigente: </b>'.$comp['nomeCompleto'].'</p></td>
+  <td><p class="card-text"><b>Funcionário dirigente: </b>'.$comp['nomeCompleto'].'</p><hr></td>
+</tr>
+<tr>
+  <td><p class="card-text"><b>Valor: </b>'.$comp['valor'].'</p></td>
 </tr>
 </table>
+<h6>Obrigado por escolher a Petshop, Cuidamos com muito carinho do seu pet!</h6>
+
+<h3>Ass:________________________________________, '.$comp['data'].'</h3> 
+
 ');
 
 

@@ -5,6 +5,12 @@ $cpfFuncionario = $_POST['cpfFuncionario'];
 $telefoneFuncionario = $_POST['telefoneFuncionario'];
 $funcionario_edit = $_POST ['funcionario_edit'];
 
+
+if ($nomeFuncionario != "") {
 $comando = "UPDATE `funcionarios` SET `nomeCompleto` = '$nomeFuncionario', `cpf` = '$cpfFuncionario', `telefone` = '$telefoneFuncionario' WHERE `funcionarios`.`id` = '$funcionario_edit'";
 mysqli_query($conexao, $comando);
-echo "<script>history.go(-1);</script>";
+header('Location: ../index.php?retorno=8.8');
+    
+} else {
+    header('Location: ../index.php?retorno=8');
+}

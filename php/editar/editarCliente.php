@@ -8,6 +8,12 @@ $cep = $_POST['cep'];
 $numero = $_POST['numero'];
 $cliente_edit = $_POST['cliente_edit'];
 
+
+if ($nomeCompleto != "") {
 $comando = "UPDATE `clientes` SET `nomeCompleto` = '$nomeCompleto', `email` = '$email', `cpf` = '$cpf', `telefone` = '$telefone', `CEP` = '$cep', `numero` = '$numero' WHERE `clientes`.`id` = '$cliente_edit'";
 mysqli_query($conexao, $comando);
-echo "<script>history.go(-1);</script>";
+header('Location: ../index.php?retorno=7.7');
+    
+} else {
+    header('Location: ../index.php?retorno=7');
+}

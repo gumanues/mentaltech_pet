@@ -3,7 +3,7 @@
 include('conexao.php');
 
 $usuario = $_POST['usuario'];
-$senha = $_POST['senha'];
+$senha = md5($_POST['senha']);
 
 $comando = "SELECT * FROM usuario WHERE usuario = '$usuario' AND senha = '$senha'";
 $resultado = mysqli_query($conexao, $comando);

@@ -1,4 +1,4 @@
-<?php require_once('conexao.php'); ?>
+<?php require_once('conexao.php');?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -62,12 +62,12 @@
     </div>
 	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==3.3){ ?>
 	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Modalidade cadastrado com sucesso!</span>
+		<span>Modalidade cadastrada com sucesso!</span>
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==4.4){ ?>
 	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Multa</span>
+		<span>Multa cadastrada com sucesso!</span>
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==5.5){ ?>
@@ -129,12 +129,12 @@
     </div>
 	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==9.9){ ?>
 	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Modalidade editado com sucesso!</span>
+		<span>Modalidade editada com sucesso!</span>
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==10.10){ ?>
 	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Multa editado com sucesso!</span>
+		<span>Multa editada com sucesso!</span>
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==11.11){ ?>
@@ -183,11 +183,6 @@
 		<span>Houve algum problema excluir o Serviço!</span>
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==20){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Houve algum problema excluir o Status!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div> 
     <!-- excluir sucesso -->
 	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==14.14){ ?>
 	<div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -201,12 +196,12 @@
     </div>
 	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==16.16){ ?>
 	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Modalidade excluido com sucesso!</span>
+		<span>Modalidade excluida com sucesso!</span>
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==17.17){ ?>
 	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Multa excluido com sucesso!</span>
+		<span>Multa excluida com sucesso!</span>
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
 	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==18.18){ ?>
@@ -219,20 +214,17 @@
 		<span>Serviço excluido com sucesso!</span>
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==20.20){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Status excluido com sucesso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
 
 	<?php } ?>
 </div>
 <!--  -->
-
-
 <nav class="navbar text-light bg-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand text-light">Petshop</a>
+    <form action="index.php" method="GET" class="d-flex" role="pesquisa">
+      <input class="form-control me-2" type="pesquisa" name="pesquisa" aria-label="pesquisa">
+      <button class="btn btn-outline-light" type="submit">Pesquisar</button>
+    </form>
     <button class="navbar-toggler bg-light bg-opacity-75" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
       aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
@@ -244,10 +236,6 @@
         <button type="button" class="btn-close bg-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-      <form action="index.php" method="GET" class="d-flex" role="pesquisa">
-      <input class="form-control me-2" type="pesquisa" name="pesquisa" aria-label="pesquisa">
-      <button class="btn btn-outline-light" type="submit">Pesquisar</button>
-    </form>
         <div>
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item dropdown">
@@ -393,9 +381,15 @@
           </a>
         </div>
         <div>
-          <a type="button" class="mt-3 dropdown-item btn-primary">
+          <form action="index.php" method="GET">
+          <a type="submit" href="../login.html" name="sair" class="mt-3 dropdown-item btn-primary">
             Sair
           </a>
+          <?php 
+            if (isset($_GET['sair'])) { 
+              session_destroy();
+            } ?>
+          </form>
         </div>
 
       </div>
@@ -432,8 +426,18 @@
               <td>
                 <label for="pet" name="pet" class="form-label">Pet</label>
                 <select class="form-select" name="pet" id="pet" required>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
+                 <?php
+                  $petsser = "SELECT * FROM pets";
+                  $petser = mysqli_query($conexao, $petsser);
+                  
+                  while ($pets_pe = mysqli_fetch_assoc($petser)) {
+                  $nomeserente_pe = $pets_pe['nome'];
+                  $idseren = $pets_pe['id'];
+                  
+
+                  echo "<option value='$idseren'>$nomeserente_pe</option>";
+                
+                  }?>
                 </select>
               </td>
             </tr>
@@ -441,8 +445,18 @@
               <td>
                 <label for="funcionario" name="funcionario" class="form-label">Funcionário</label>
                 <select class="form-select" name="funcionario" id="funcionario" required>
-                <option value="1">1</option>
-                  <option value="2">2</option>
+                <?php
+                  $funcsser = "SELECT * FROM funcionarios";
+                  $funcser = mysqli_query($conexao, $funcsser);
+                  
+                  while ($funcs_fu = mysqli_fetch_assoc($funcser)) {
+                  $nomeserente_fu = $funcs_fu['nomeCompleto'];
+                  $idfuncion = $funcs_fu['id'];
+                  
+
+                  echo "<option value='$idfuncion'>$nomeserente_fu</option>";
+                
+                  }?>
                 </select>
               </td>
             </tr>
@@ -450,8 +464,18 @@
               <td>
                 <label for="servico" name="servico" class="form-label">Serviço</label>
                 <select class="form-select" name="servico" id="servico" required>
-                <option value="1">1</option>
-                  <option value="2">2</option>
+                <?php
+                  $servicsser = "SELECT * FROM servicos";
+                  $servicser = mysqli_query($conexao, $servicsser);
+                  
+                  while ($servics_fu = mysqli_fetch_assoc($servicser)) {
+                  $nomeservic = $servics_fu['descricao'];
+                  $idservicion = $servics_fu['id'];
+                  
+
+                  echo "<option value='$idservicion'>$nomeservic</option>";
+                
+                  }?>
                 </select>
               </td>
             </tr>
@@ -553,8 +577,18 @@
               <td>
                 <label for="nomeCliente" name="nomeCliente" class="form-label">Nome do Cliente</label>
                 <select class="form-select" name="nomeCliente" id="nomeCliente" required>
-                  <option value="1">2</option>
-                  <option value="2">1</option>
+                <?php  
+                  $pets_cli = "SELECT * FROM clientes";
+                  $pet_cli = mysqli_query($conexao, $pets_cli);
+                  
+                  while ($clientes_pe = mysqli_fetch_assoc($pet_cli)) {
+                  $nome_cliente_pe = $clientes_pe['nomeCompleto'];
+                  $id_clien = $clientes_pe['id'];
+                  
+
+                  echo "<option value='$id_clien'>$nome_cliente_pe</option>";
+                
+                  }?>
                 </select>
               </td>
             </tr>
@@ -589,7 +623,7 @@
             <tr>
               <td>
                 <label for="cpfFuncionario" name="cpfFuncionario" class="form-label">CPF</label>
-                <input type="text" class="form-control" id="cpfFuncionario" name="cpfFuncionario" required>
+                <input type="number" class="form-control" id="cpfFuncionario" name="cpfFuncionario" required>
               </td>
             </tr>
             <tr>
@@ -1397,16 +1431,12 @@
 </div>
 
 <?php 
-$comando = "SELECT * FROM agendamento A 
-INNER JOIN servicos S on S.id = A.servicos_id
-INNER JOIN funcionarios F ON F.id = A.funcionarios_id
-INNER JOIN pets P ON P.id = A.pets_id
-INNER JOIN clientes C ON C.id = P.clientes_id";
+$comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`id` ASC";
 
-if(isset($_GET['filtrar']) && $_GET['filtrar'] == "DESC") {
+if(isset($_GET['filtrar']) && $_GET['filtrar'] == "ASC") {
   $comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`id` DESC";
 }
-if(isset($_GET['filtrar']) && $_GET['filtrar'] == "ASC") {
+if(isset($_GET['filtrar']) && $_GET['filtrar'] == "DESC") {
   $comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`id` ASC";
 }
 
@@ -1493,16 +1523,6 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
                     </svg>
                     Em andamento
                   </button></form></li>
-                <li><button class="dropdown-item" data-bs-toggle="modal"
-                    data-bs-target="#exampleModalMulta1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                      class="bi bi-exclamation-circle" viewBox="0 0 16 16">
-                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                      <path
-                        d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
-                    </svg>
-                    Cancelado
-                  </button></li>
                 <li><form action="editar/editarStatus.php" method="post"><button class="dropdown-item" type="submit">
                 <input type="hidden" name="status" value="3">
                 <input type="hidden" name="edit_status" value="<?=$z['id']?>">
@@ -1514,6 +1534,16 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
                     </svg>
                     Concluido
                   </button></form></li>
+                  <li><button class="dropdown-item" data-bs-toggle="modal"
+                    data-bs-target="#exampleModalMulta1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                      class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                      <path
+                        d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
+                    </svg>
+                    Cancelado
+                  </button></li>
               </ul>
             </div>
             </a>
