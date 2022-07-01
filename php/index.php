@@ -1,4 +1,10 @@
-<?php require_once('conexao.php');?>
+<?php require_once('conexao.php');
+
+session_start();
+
+if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
+
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -381,14 +387,11 @@
           </a>
         </div>
         <div>
-          <form action="index.php" method="GET">
-          <a type="submit" href="../login.html" name="sair" class="mt-3 dropdown-item btn-primary">
+          <form action="sair.php" method="GET">
+          <input type="hidden" name="sair">
+          <button type="submit" class="mt-3 dropdown-item btn-primary">
             Sair
-          </a>
-          <?php 
-            if (isset($_GET['sair'])) { 
-              session_destroy();
-            } ?>
+            </button>
           </form>
         </div>
 
@@ -400,6 +403,7 @@
 </div>
 </div>
 </nav>
+
 
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -1643,3 +1647,7 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
 </body>
 
 </html>
+
+<?php } else {
+  header('Location: ../login.html');
+} ?>
