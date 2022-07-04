@@ -23,6 +23,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
   <title>Petshop</title>
 </head> 
 
+<!-- Alertas -->
 <!--Cadastros erros -->
 <div id="alertas">
     <?php if(isset($_GET['retorno'])==true && $_GET['retorno']==1){ ?>
@@ -223,7 +224,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
 
 	<?php } ?>
 </div>
-<!--  -->
+<!-- Navegação -->
 <nav class="navbar text-light bg-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand text-light">Petshop</a>
@@ -404,7 +405,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
 </div>
 </nav>
 
-
+<!-- Cadastrar -->
 <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -509,33 +510,33 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="nomeCompleto" name="nomeCompleto" class="form-label">Nome Completo</label>
-                <input type="text" class="form-control" id="nomeCompleto" name="nomeCompleto" requided>
+                <input type="text" class="form-control" id="nomeCompleto" maxlength="100" minlenght="4" name="nomeCompleto" required>
               </td>
               <td>
                 <label for="email" name="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="email" name="email" requided>
+                <input type="email" class="form-control" id="email" maxlength="100" minlenght="4" name="email" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="cpf" name="cpf" class="form-label">CPF</label>
-                <input type="number" class="form-control" id="cpf" name="cpf" requided>
+                <input type="number" class="form-control" id="cpf" maxlength="11" minlenght="11" name="cpf" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="telefone" name="telefone" class="form-label">Telefone</label>
-                <input type="number" class="form-control" id="telefone" name="telefone" requided>
+                <input type="number" class="form-control" id="telefone" maxlength="12" minlenght="12" name="telefone" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="cep" name="cep" class="form-label">CEP</label>
-                <input type="number" class="form-control" id="cep" name="cep" requided>
+                <input type="number" class="form-control" id="cep" maxlength="8" minlenght="8" name="cep" required>
               </td>
               <td>
                 <label for="numero" name="numero" class="form-label">Nº</label>
-                <input type="number" class="form-control" id="numero" name="numero" requided>
+                <input type="number" class="form-control" id="numero" maxlength="8" name="numero" required>
               </td>
             </tr>
           </table>
@@ -564,11 +565,11 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="nome" name="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome">
+                <input type="text" class="form-control" id="nome" maxlength="100" minlenght="4" name="nome">
               </td>
               <td>
                 <label for="raca" name="raca" class="form-label">Raça</label>
-                <input type="text" class="form-control" id="raca" name="raca" required>
+                <input type="text" class="form-control" id="raca" maxlength="50" minlenght="4" name="raca" required>
               </td>
             </tr>
             <tr>
@@ -621,19 +622,19 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="nomeFuncionario" name="nomeFuncionario" class="form-label">Nome Completo</label>
-                <input type="text" class="form-control" id="nomeFuncionario" name="nomeFuncionario" required>
+                <input type="text" class="form-control" id="nomeFuncionario" maxlength="100" minlenght="4" name="nomeFuncionario" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="cpfFuncionario" name="cpfFuncionario" class="form-label">CPF</label>
-                <input type="number" class="form-control" id="cpfFuncionario" name="cpfFuncionario" required>
+                <input type="number" class="form-control" id="cpfFuncionario" maxlength="11" minlenght="11" name="cpfFuncionario" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="telefoneFuncionario" name="telefoneFuncionario" class="form-label">Telefone</label>
-                <input type="number" class="form-control" id="telefoneFuncionario" name="telefoneFuncionario" required>
+                <input type="number" class="form-control" id="telefoneFuncionario" maxlength="12" minlenght="12" name="telefoneFuncionario" required>
               </td>
             </tr>
           </table>
@@ -646,7 +647,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
     </div>
   </div>
 </div>
-
+<!-- Editar -->
 <div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -659,7 +660,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
           <table>
             <tr>
               <td>
-                <label for="servico_edit" name="servico_edit" class="form-label">Selecione o serviço ao qual será editado</label>
+                <label for="servico_edit" name="servico_edit" class="form-label">Selecione o serviço</label>
                 <select class="form-select" name="servico_edit" id="servico_edit" required>
                   <?php  
                   $com_servico = "SELECT * FROM agendamento";
@@ -757,7 +758,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
           <table>
             <tr>
               <td>
-                <label for="cliente_edit" name="cliente_edit" class="form-label">Selecione o cliente ao qual será editado</label>
+                <label for="cliente_edit" name="cliente_edit" class="form-label">Selecione o cliente</label>
                 <select class="form-select" name="cliente_edit" id="cliente_edit" required>
                   <?php 
                   $com_client = "SELECT * FROM clientes";
@@ -767,42 +768,43 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
                   $id_cliente = $clientes['id'];
                   $nom_cliente = $clientes['nomeCompleto'];
 
-                  echo "<option value='$id_cliente'>$nom_cliente</option>";
+                  echo "<option value='$id_cliente'>$nom_cliente</option>"; 
+                  }
                   
-                  }?>
+                  ?>
                 </select>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="nomeCompleto" name="nomeCompleto" class="form-label">Nome Completo</label>
-                <input type="text" class="form-control" id="nomeCompleto" name="nomeCompleto" required>
+                <input type="text" class="form-control" id="nomeCompleto" maxlength="100" minlenght="4" name="nomeCompleto" required>
               </td>
               <td>
                 <label for="email" name="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="email" name="email" required>
+                <input type="email" class="form-control" id="email" maxlength="100" minlenght="4" name="email" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="cpf" name="cpf" class="form-label">CPF</label>
-                <input type="number" class="form-control" id="cpf" name="cpf" required>
+                <input type="number" class="form-control" id="cpf" maxlength="11" minlenght="11" name="cpf" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="telefone" name="telefone" class="form-label">Telefone</label>
-                <input type="number" class="form-control" id="telefone" name="telefone" required>
+                <input type="number" class="form-control" id="telefone" maxlength="12" minlenght="12" name="telefone" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="cep" name="cep" class="form-label">CEP</label>
-                <input type="number" class="form-control" id="cep" name="cep" required>
+                <input type="number" class="form-control" id="cep" maxlength="8" minlenght="8" name="cep" required>
               </td>
               <td>
                 <label for="numero" name="numero" class="form-label">Nº</label>
-                <input type="number" class="form-control" id="numero" name="numero" required>
+                <input type="number" class="form-control" id="numero" maxlength="8" minlenght="8" name="numero" required>
               </td>
             </tr>
           </table>
@@ -829,7 +831,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
           <table>
             <tr>
               <td>
-                <label for="pet_edit" name="pet_edit" class="form-label">Selecione o Pet ao qual será editado</label>
+                <label for="pet_edit" name="pet_edit" class="form-label">Selecione o Pet</label>
                 <select class="form-select" name="pet_edit" id="pet_edit" required>
                 <?php
                 $com_servico = "SELECT * FROM agendamento";
@@ -860,11 +862,11 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="nome" name="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" required>
+                <input type="text" class="form-control" maxlength="100" minlenght="4" id="nome" name="nome" required>
               </td>
               <td>
                 <label for="raca" name="raca" class="form-label">Raça</label>
-                <input type="text" class="form-control" id="raca" name="raca" required>
+                <input type="text" class="form-control" maxlength="50" minlenght="4" id="raca" name="raca" required>
               </td>
             </tr>
             <tr>
@@ -934,19 +936,19 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="nomeFuncionario" name="nomeFuncionario" class="form-label">Nome Completo</label>
-                <input type="text" class="form-control" id="nomeFuncionario" name="nomeFuncionario" required>
+                <input type="text" class="form-control" id="nomeFuncionario" maxlength="100" minlenght="4" name="nomeFuncionario" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="cpfFuncionario" name="cpfFuncionario" class="form-label">CPF</label>
-                <input type="number" class="form-control" id="cpfFuncionario" name="cpfFuncionario" required>
+                <input type="number" class="form-control" id="cpfFuncionario" maxlength="11" minlenght="11" name="cpfFuncionario" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="telefoneFuncionario" name="telefoneFuncionario" class="form-label">Telefone</label>
-                <input type="number" class="form-control" id="telefoneFuncionario" name="telefoneFuncionario" required>
+                <input type="number" class="form-control" id="telefoneFuncionario" maxlength="12" minlenght="12" name="telefoneFuncionario" required>
               </td>
             </tr>
           </table>
@@ -959,7 +961,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
     </div>
   </div>
 </div>
-<!-- -------------------------------------------------------- -->
+<!-- Excluir -->
 <div class="modal fade" id="exampleModal9" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -1140,7 +1142,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
     </div>
   </div>
 </div>
-<!-- ------------------------------------------------------- -->
+<!-- Modalidade -->
 <div class="modal fade" id="exampleModal13" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -1154,13 +1156,13 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="descricaoServico" name="descricaoServico" class="form-label">Descrição do Serviço</label>
-                <input type="text" class="form-control" id="descricaoServico" name="descricaoServico" required>
+                <input type="text" class="form-control" maxlength="100" minlenght="4" id="descricaoServico" name="descricaoServico" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="valorServico" name="valorServico" class="form-label">Valor do Serviço</label>
-                <input type="number" class="form-control" placeholder="350,00 R$" id="valorServico" name="valorServico" required>
+                <input type="number" class="form-control" maxlength="8" placeholder="350,00 R$" id="valorServico" name="valorServico" required>
               </td>
             </tr>
           </table>
@@ -1205,13 +1207,13 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="descricaoServico" name="descricaoServico" class="form-label">Descrição do Serviço</label>
-                <input type="text" class="form-control" id="descricaoServico" name="descricaoServico" required>
+                <input type="text" class="form-control" id="descricaoServico" maxlength="100" minlenght="4"  name="descricaoServico" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="valorServico" name="valorServico" class="form-label">Valor do Serviço</label>
-                <input type="number" class="form-control" placeholder="350,00 R$" id="valorServico" name="valorServico" required>
+                <input type="number" class="form-control" maxlength="6" placeholder="350,00 R$" id="valorServico" name="valorServico" required>
               </td>
             </tr>
           </table>
@@ -1409,6 +1411,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
 
 <body class="bg-light">
 
+<!-- Filtrar -->
 <div class="pt-2">
     <table>
       <tr>
@@ -1433,15 +1436,15 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
       </tr>
     </table>
 </div>
-
+<!-- Comandos de visualização de serviços -->
 <?php 
-$comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`id` ASC";
+$comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`id` DESC";
 
 if(isset($_GET['filtrar']) && $_GET['filtrar'] == "ASC") {
-  $comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`id` DESC";
+  $comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`id` ASC";
 }
 if(isset($_GET['filtrar']) && $_GET['filtrar'] == "DESC") {
-  $comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`id` ASC";
+  $comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`id` DESC";
 }
 
 if(isset($_GET['pesquisa']) && $_GET['pesquisa'] != ""){
@@ -1461,6 +1464,14 @@ WHERE C.nomeCompleto LIKE '".$pesquisa."%'";
 $resultado=mysqli_query($conexao, $comando);
 while($z = mysqli_fetch_assoc($resultado)){
 
+$dt = $z['data'];
+$hi = $z['horarioInicio'];
+$hf = $z['horarioFinal'];
+
+$data = date('d/m/Y', strtotime($dt));
+
+$horarioI = date('H:i', strtotime($hi));
+$horarioF = date('H:i', strtotime($hf));
 
 ?>
   <header>
@@ -1606,13 +1617,13 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
       <div class="d-flex justify-content-evenly card-body">
         <table>
           <tr>
-            <td><p class="card-text"><b>Data de cadastro: </b><?=$z['data']?></p></td>
+            <td><p class="card-text"><b>Data de cadastro: </b><?=$data?></p></td>
           </tr>
           <tr>
-            <td><p class="card-text"><b>Horario de início: </b><?=$z['horarioInicio']?></p></td>
+            <td><p class="card-text"><b>Horario de início: </b><?=$horarioI?></p></td>
           </tr>
           <tr>
-            <td><p class="card-text"><b>Horario de término: </b><?=$z['horarioFinal']?></p></td>
+            <td><p class="card-text"><b>Horario de término: </b><?=$horarioF?></p></td>
           </tr>
         </table>
         <table>

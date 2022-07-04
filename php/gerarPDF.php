@@ -28,6 +28,17 @@ WHERE A.id = '$idPDF'";
 
 $resultado = mysqli_query($conexao, $comando);
 $comp = mysqli_fetch_assoc($resultado);
+
+$dt = $comp['data'];
+$data = date('d/m/Y', strtotime($dt));
+
+$hi = $comp['horarioInicio'];
+$hf = $comp['horarioFinal'];
+
+$horarioI = date('H:i', strtotime($hi));
+$horarioF = date('H:i', strtotime($hf));
+
+
 // Create an instance of the class:
 $mpdf = new \Mpdf\Mpdf();
 
@@ -37,7 +48,7 @@ $mpdf->WriteHTML('
 <h2>Comprovante</h2>
 <table>
 <tr>
-    <td><p class="card-text"><b>Horário: Das </b>'.$comp['horarioInicio'].'<b> as </b>'.$comp['horarioFinal'].'</p></td>
+    <td><p class="card-text"><b>Horário: Das </b>'.$horarioI.'<b> às </b>'.$horarioF.'</p></td>
 </tr>
 </table>
 <table>
@@ -62,12 +73,12 @@ $mpdf->WriteHTML('
   <td><p class="card-text"><b>Funcionário dirigente: </b>'.$comp['nomeCompleto'].'</p><hr></td>
 </tr>
 <tr>
-  <td><p class="card-text"><b>Valor: </b>'.$comp['valor'].'</p></td>
+  <td><p class="card-text"><b>Valor: </b>R$ '.$comp['valor'].'</p></td>
 </tr>
 </table>
 <h6>Obrigado por escolher a Petshop, Cuidamos com muito carinho do seu pet!</h6>
 
-<h3>Ass:________________________________________, '.$comp['data'].'</h3> 
+<h3>Ass:________________________________________, '.$data.'.</h3> 
 
 ');
 
