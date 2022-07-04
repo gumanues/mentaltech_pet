@@ -1438,13 +1438,13 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
 </div>
 <!-- Comandos de visualização de serviços -->
 <?php 
-$comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`id` DESC";
+$comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`data` DESC";
 
 if(isset($_GET['filtrar']) && $_GET['filtrar'] == "ASC") {
-  $comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`id` ASC";
+  $comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`data` ASC";
 }
 if(isset($_GET['filtrar']) && $_GET['filtrar'] == "DESC") {
-  $comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`id` DESC";
+  $comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`data` DESC";
 }
 
 if(isset($_GET['pesquisa']) && $_GET['pesquisa'] != ""){

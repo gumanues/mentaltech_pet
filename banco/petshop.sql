@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `petshop`
 --
-CREATE DATABASE petshop;
+
 -- --------------------------------------------------------
 
 --
