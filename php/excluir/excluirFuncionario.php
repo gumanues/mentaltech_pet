@@ -7,7 +7,7 @@ if ($funcionario_excluirs != "") {
 $ver = "SELECT * FROM agendamento WHERE funcionarios_id = '$funcionario_excluir'";
 $com = mysqli_query($conexao, $ver);
 $v = mysqli_fetch_assoc($com);
-$verificação = ['funcionarios_id'];
+$verificação = $v['funcionarios_id'];
 if($verificação) {
 
     echo "<script> alert('Este funcionario está atrelado a serviços, exclua isto antes.'); history.go(-1); </script>";

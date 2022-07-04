@@ -7,7 +7,7 @@ if ($pet_excluir != "") {
 $ver = "SELECT * FROM agendamento WHERE pets_id = '$pet_excluir'";
 $com = mysqli_query($conexao, $ver);
 $v = mysqli_fetch_assoc($com);
-$verificação = ['pets_id'];
+$verificação = $v['pets_id'];
 if($verificação) {
 
     echo "<script>alert('Este pet está atrelado a serviços, exclua isto antes.'); history.go(-1); </script>";

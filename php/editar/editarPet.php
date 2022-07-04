@@ -7,7 +7,7 @@ $nomeCliente = $_POST['nomeCliente'];
 $pet_edit = $_POST ['pet_edit'];
 
 
-if ($nome != "") {
+if ($raca != "") {
 $comando = "UPDATE `pets` SET `nome` = '$nome', `raca` = '$raca', `dataNasc` = '$dataNasc', `clientes_id` = '$nomeCliente' WHERE `pets`.`id` = '$pet_edit'";
 mysqli_query($conexao, $comando);
 header('Location: ../index.php?retorno=11.11');
