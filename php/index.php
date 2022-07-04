@@ -1468,6 +1468,7 @@ $dt = $z['data'];
 $hi = $z['horarioInicio'];
 $hf = $z['horarioFinal'];
 
+
 $data = date('d/m/Y', strtotime($dt));
 
 $horarioI = date('H:i', strtotime($hi));

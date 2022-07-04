@@ -38,7 +38,6 @@ $hf = $comp['horarioFinal'];
 $horarioI = date('H:i', strtotime($hi));
 $horarioF = date('H:i', strtotime($hf));
 
-
 // Create an instance of the class:
 $mpdf = new \Mpdf\Mpdf();
 
