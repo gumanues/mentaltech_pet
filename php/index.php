@@ -419,6 +419,12 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
           <table>
             <tr>
               <td>
+                <label for="data" name="data" class="form-label">Data</label>
+                <input type="date" class="form-control" id="data" name="data" required>
+              </td>
+            </tr>
+            <tr>
+              <td>
                 <label for="horarioInicio" name="horarioInicio" class="form-label">Horario Início</label>
                 <input type="time" class="form-control" id="horarioInicio" name="horarioInicio" required>
               </td>
@@ -687,6 +693,12 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
                 
                   }?>
                 </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="data" name="data" class="form-label">Data</label>
+                <input type="date" class="form-control" id="data" name="data" required>
               </td>
             </tr>
             <tr>
@@ -1263,39 +1275,20 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
         $c_multas = "SELECT * FROM multa";
         $res_multas = mysqli_query($conexao, $c_multas);
         while ($multas = mysqli_fetch_assoc($res_multas)) {
-        
-        $valor = $multas['valor'];
         $id_multa = $multas['id'];
-        $id_ag = $multas['agendamento_id'];
-
-        $c_ag = "SELECT * FROM agendamento WHERE id = '$id_ag'";
-        $res_ag = mysqli_query($conexao, $c_ag);
-        $ag = mysqli_fetch_assoc($res_ag);
-
-        $servicos_id = $ag['servicos_id'];
-        $pets_id = $ag['pets_id'];
-
-        $ser = "SELECT * FROM servicos WHERE id = '$servicos_id'";
-        $res_ser = mysqli_query($conexao, $ser);
-        $serv = mysqli_fetch_assoc($res_ser);
-
-        $nome_servic = $serv['descricao'];
-
-        $c_nome = "SELECT * FROM pets WHERE id = '$pets_id'";
-        $res_nome = mysqli_query($conexao, $c_nome);
-        $pt = mysqli_fetch_assoc($res_nome);
-
-        $nome_usu = $pt['clientes_id'];
-
-        $nome_usuario = "SELECT * FROM clientes WHERE id = '$nome_usu'";
-        $res_usuario = mysqli_query($conexao, $nome_usuario);
-        $nm = mysqli_fetch_assoc($res_usuario);
-
-        $nm_usuario = $nm['nomeCompleto'];
-        $nr_usuario = $nm['numero'];
-
-       
-
+        
+        $comando_mul = "SELECT * FROM agendamento A 
+        INNER JOIN servicos S on S.id = A.servicos_id
+        INNER JOIN pets P ON P.id = A.pets_id
+        INNER JOIN clientes C ON C.id = P.clientes_id
+        WHERE A.id = '$id_multa'"; 
+        $com_mul = mysqli_query($conexao, $comando_mul);
+        $mul = mysqli_fetch_assoc($com_mul); 
+          
+        $valor = $multas['valor'];
+        $nome_servic = $mul['descricao'];
+        $nm_usuario = $mul['nomeCompleto'];
+        $nr_usuario = $mul['numero'];
 
         echo '
           <tr class="m-5">
@@ -1343,26 +1336,21 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
                   $com_multa = "SELECT * FROM multa";
                   $res_clienes = mysqli_query($conexao, $com_multa);
                   while ($multaes = mysqli_fetch_assoc($res_clienes)) {
+
+                    $id_mu = $multaes['id'];
+                    $id_multae = $multaes['agendamento_id'];
+
+                    $comando_mulltas = "SELECT * FROM agendamento A 
+                    INNER JOIN servicos S on S.id = A.servicos_id
+                    INNER JOIN pets P ON P.id = A.pets_id
+                    INNER JOIN clientes C ON C.id = P.clientes_id
+                    WHERE A.id = '$id_mu'"; 
+                    $com_mulltae = mysqli_query($conexao, $comando_mulltas);
+                    $mull = mysqli_fetch_assoc($com_mulltae); 
                   
-                  $id_multae = $multaes['agendamento_id'];
-                  $nom_multae = $multaes['valor'];
+                    $clinome = $mull['nomeCompleto'];
 
-                  $multa_find = "SELECT * FROM agendamento WHERE id = '$id_multae'";
-                  $res_petag = mysqli_query($conexao, $multa_find);
-                  $ag_find = mysqli_fetch_assoc($res_petag);
-                  $pet = $ag_find['pets_id'];
-
-                  $multa_pet = "SELECT * FROM pets WHERE id = '$pet'";
-                  $res_pet = mysqli_query($conexao, $multa_pet);
-                  $ag_pet = mysqli_fetch_assoc($res_pet);
-                  $petid = $ag_pet['clientes_id'];
-
-                  $multa_cli = "SELECT * FROM clientes WHERE id = '$petid'";
-                  $res_clien = mysqli_query($conexao, $multa_cli);
-                  $ag_cli = mysqli_fetch_assoc($res_clien);
-                  $clinome = $ag_cli['nomeCompleto'];
-
-                  echo "<option value='$id_multae'>$clinome</option>";
+                    echo "<option value='$id_multae'>$clinome</option>";
                   
                   }?>
                 </select>
