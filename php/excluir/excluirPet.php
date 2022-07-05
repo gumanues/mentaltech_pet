@@ -8,18 +8,17 @@ $ver = "SELECT * FROM agendamento WHERE pets_id = '$pet_excluir'";
 $com = mysqli_query($conexao, $ver);
 $v = mysqli_fetch_assoc($com);
 $verificação = $v['pets_id'];
-if($verificação) {
-
-    echo "<script>alert('Este pet está atrelado a serviços, exclua isto antes.'); history.go(-1); </script>";
-
-} else {
+if($verificação != true) {
 
     $comando = "DELETE FROM `pets` WHERE `pets`.`id` = '$pet_excluir'";
     mysqli_query($conexao, $comando);
+    header('Location: ../index.php?retorno=18.18');
+
+} else {
+
+    echo "<script>alert('Este pet está atrelado a serviços, exclua isto antes.'); history.go(-1); </script>";
 
 }
-
-header('Location: ../index.php?retorno=18.18');
     
 } else {
     header('Location: ../index.php?retorno=18');

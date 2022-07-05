@@ -2,7 +2,7 @@
 
 $descricaoServico = $_POST['descricaoServico'];
 $valorServico = $_POST['valorServico'];
-$servico_edit = $_POST['servico_edit']
+$servico_edit = $_POST['servico_edit'];
 
 
 if ($descricaoServico != "") {

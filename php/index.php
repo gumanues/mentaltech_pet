@@ -430,7 +430,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="pet" name="pet" class="form-label">Pet</label>
-                <select class="form-select" name="pet" id="pet" required>
+                <select class="form-select" name="pet" id="pet">
                  <?php
                   $petsser = "SELECT * FROM pets";
                   $petser = mysqli_query($conexao, $petsser);
@@ -449,7 +449,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="funcionario" name="funcionario" class="form-label">Funcionário</label>
-                <select class="form-select" name="funcionario" id="funcionario" required>
+                <select class="form-select" name="funcionario" id="funcionario">
                 <?php
                   $funcsser = "SELECT * FROM funcionarios";
                   $funcser = mysqli_query($conexao, $funcsser);
@@ -468,7 +468,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="servico" name="servico" class="form-label">Serviço</label>
-                <select class="form-select" name="servico" id="servico" required>
+                <select class="form-select" name="servico" id="servico">
                 <?php
                   $servicsser = "SELECT * FROM servicos";
                   $servicser = mysqli_query($conexao, $servicsser);
@@ -581,7 +581,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="nomeCliente" name="nomeCliente" class="form-label">Nome do Cliente</label>
-                <select class="form-select" name="nomeCliente" id="nomeCliente" required>
+                <select class="form-select" name="nomeCliente" id="nomeCliente">
                 <?php  
                   $pets_cli = "SELECT * FROM clientes";
                   $pet_cli = mysqli_query($conexao, $pets_cli);
@@ -661,7 +661,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="servico_edit" name="servico_edit" class="form-label">Selecione o serviço</label>
-                <select class="form-select" name="servico_edit" id="servico_edit" required>
+                <select class="form-select" name="servico_edit" id="servico_edit">
                   <?php  
                   $com_servico = "SELECT * FROM agendamento";
                   $id_servico = mysqli_query($conexao, $com_servico);
@@ -702,7 +702,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="funcionario" name="funcionario" class="form-label">Funcionário</label>
-                <select class="form-select" name="funcionario" id="funcionario" required>
+                <select class="form-select" name="funcionario" id="funcionario">
                 <?php 
                 $edit_pet_funcionario = "SELECT * FROM funcionarios";
                 $editar_pet_func = mysqli_query($conexao, $edit_pet_funcionario);
@@ -720,7 +720,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="servico" name="servico" class="form-label">Serviço</label>
-                <select class="form-select" name="servico" id="servico" required>
+                <select class="form-select" name="servico" id="servico">
                 <?php 
                 $edit_pet_servico = "SELECT * FROM servicos";
                 $editar_pet_serv = mysqli_query($conexao, $edit_pet_servico);
@@ -759,7 +759,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="cliente_edit" name="cliente_edit" class="form-label">Selecione o cliente</label>
-                <select class="form-select" name="cliente_edit" id="cliente_edit" required>
+                <select class="form-select" name="cliente_edit" id="cliente_edit">
                   <?php 
                   $com_client = "SELECT * FROM clientes";
                   $res_clienes = mysqli_query($conexao, $com_client);
@@ -832,29 +832,17 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="pet_edit" name="pet_edit" class="form-label">Selecione o Pet</label>
-                <select class="form-select" name="pet_edit" id="pet_edit" required>
+                <select class="form-select" name="pet_edit" id="pet_edit">
                 <?php
-                $com_servico = "SELECT * FROM agendamento";
-                  $id_servico = mysqli_query($conexao, $com_servico);
-                  
-                  while ($id_ser = mysqli_fetch_assoc($id_servico)) {
 
-                  $id_pet = $id_ser['pets_id'];
+                  $com_pet = "SELECT * FROM pets";
+                  $resul_pet = mysqli_query($conexao, $com_pet);
+                  while($apet = mysqli_fetch_assoc($resul_pet)){
 
-                  $listar_por_pets = "SELECT * FROM pets WHERE id = '$id_pet'";
-                  $nome_pet = mysqli_query($conexao, $listar_por_pets);
-                  $nom_pet = mysqli_fetch_assoc($nome_pet);
+                  $id_pet = $apet['id'];
+                  $list_pets = $apet['nome'];
 
-                  $list_pets = $nom_pet['nome'];
-
-                  $listar_por_cli = "SELECT * FROM clientes WHERE id = ".$nom_pet['clientes_id'];
-                  $nome_cli = mysqli_query($conexao, $listar_por_cli);
-                  $nom_cli = mysqli_fetch_assoc($nome_cli);
-
-                  $nom_client = $nom_cli['nomeCompleto'];
-                  
-
-                  echo "<option value='$id_pet'>$nom_client - $list_pets</option>";
+                  echo "<option value='$id_pet'>$list_pets</option>";
                   }?>
                 </select>
               </td>
@@ -878,7 +866,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="nomeCliente" name="nomeCliente" class="form-label">Nome do Cliente</label>
-                <select class="form-select" name="nomeCliente" id="nomeCliente" required>
+                <select class="form-select" name="nomeCliente" id="nomeCliente">
                   <?php 
                   $com_nomCli = "SELECT * FROM clientes";
                   $res_nomCli = mysqli_query($conexao, $com_nomCli);
@@ -918,7 +906,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="funcionario_edit" name="funcionario_edit" class="form-label">Selecione o Funcionário</label>
-                <select class="form-select" name="funcionario_edit" id="funcionario_edit" required>
+                <select class="form-select" name="funcionario_edit" id="funcionario_edit">
                   <?php
                   $com_fun = "SELECT * FROM funcionarios";
                   $res_fun = mysqli_query($conexao, $com_fun);
@@ -975,7 +963,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
               <label for="servico_excluir" name="servico_excluir" class="form-label">Selecione o serviço</label>
-                <select class="form-select" name="servico_excluir" id="servico_excluir" required>
+                <select class="form-select" name="servico_excluir" id="servico_excluir">
                   <?php  
                   $com_servico = "SELECT * FROM agendamento";
                   $id_servico = mysqli_query($conexao, $com_servico);
@@ -1027,7 +1015,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="cliente_excluir" name="cliente_excluir" class="form-label">Selecione o cliente</label>
-                <select class="form-select" name="cliente_excluir" id="cliente_excluir" required>
+                <select class="form-select" name="cliente_excluir" id="cliente_excluir">
                   <?php 
                   $com_client = "SELECT * FROM clientes";
                   $res_clienes = mysqli_query($conexao, $com_client);
@@ -1066,29 +1054,17 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="pet_excluir" name="pet_excluir" class="form-label">Selecione o Pet</label>
-                <select class="form-select" name="pet_excluir" id="pet_excluir" required>
-                <?php
-                $com_servico = "SELECT * FROM agendamento";
-                  $id_servico = mysqli_query($conexao, $com_servico);
-                  
-                  while ($id_ser = mysqli_fetch_assoc($id_servico)) {
+                <select class="form-select" name="pet_excluir" id="pet_excluir">
+                  <?php
 
-                  $id_pet = $id_ser['pets_id'];
+                  $ex_pet = "SELECT * FROM pets";
+                  $resulex_pet = mysqli_query($conexao, $ex_pet);
+                  while($expet = mysqli_fetch_assoc($resulex_pet)){
 
-                  $listar_por_pets = "SELECT * FROM pets WHERE id = '$id_pet'";
-                  $nome_pet = mysqli_query($conexao, $listar_por_pets);
-                  $nom_pet = mysqli_fetch_assoc($nome_pet);
+                  $exid_pet = $expet['id'];
+                  $exlist_pets = $expet['nome'];
 
-                  $list_pets = $nom_pet['nome'];
-
-                  $listar_por_cli = "SELECT * FROM clientes WHERE id = ".$nom_pet['clientes_id'];
-                  $nome_cli = mysqli_query($conexao, $listar_por_cli);
-                  $nom_cli = mysqli_fetch_assoc($nome_cli);
-
-                  $nom_client = $nom_cli['nomeCompleto'];
-                  
-
-                  echo "<option value='$id_pet'>$nom_client - $list_pets</option>";
+                  echo "<option value='$exid_pet'>$exlist_pets</option>";
                   }?>
                 </select>
               </td>
@@ -1117,7 +1093,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="funcionario_excluir" name="funcionario_excluir" class="form-label">Selecione o Funcionário</label>
-                <select class="form-select" name="funcionario_excluir" id="funcionario_excluir" required>
+                <select class="form-select" name="funcionario_excluir" id="funcionario_excluir">
                   <?php
                   $com_fun = "SELECT * FROM funcionarios";
                   $res_fun = mysqli_query($conexao, $com_fun);
@@ -1189,7 +1165,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="servico_edit" name="servico_edit" class="form-label">Selecione o Serviço</label>
-                <select class="form-select" name="servico_edit" id="servico_edit" required>
+                <select class="form-select" name="servico_edit" id="servico_edit">
                   <?php
                   $com_ser = "SELECT * FROM servicos";
                   $res_ser = mysqli_query($conexao, $com_ser);
@@ -1240,7 +1216,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
               <label for="servico_excluir" name="servico_excluir" class="form-label">Selecione o Serviço</label>
-                <select class="form-select" name="servico_excluir" id="servico_excluir" required>
+                <select class="form-select" name="servico_excluir" id="servico_excluir">
                   <?php
                   $com_ser = "SELECT * FROM servicos";
                   $res_ser = mysqli_query($conexao, $com_ser);
@@ -1362,7 +1338,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="multa_edit" name="multa_edit" class="form-label">Selecione o cliente</label>
-                <select class="form-select" name="multa_edit" id="multa_edit" required>
+                <select class="form-select" name="multa_edit" id="multa_edit">
                   <?php 
                   $com_multa = "SELECT * FROM multa";
                   $res_clienes = mysqli_query($conexao, $com_multa);
