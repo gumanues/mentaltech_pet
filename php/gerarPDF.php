@@ -69,7 +69,7 @@ $mpdf->WriteHTML('
   <td><p class="card-text"><b>Serviço: </b>'.$comp['descricao'].'</p></td>
 </tr>
 <tr>
-  <td><p class="card-text"><b>Funcionário dirigente: </b>'.$comp['nomeCompleto'].'</p><hr></td>
+  <td><p class="card-text"><b>Funcionário dirigente: </b>'.$comp['nomeComp'].'</p><hr></td>
 </tr>
 <tr>
   <td><p class="card-text"><b>Valor: </b>R$ '.$comp['valor'].'</p></td>

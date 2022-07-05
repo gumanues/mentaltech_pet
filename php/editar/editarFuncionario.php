@@ -7,7 +7,7 @@ $funcionario_edit = $_POST ['funcionario_edit'];
 
 
 if ($nomeFuncionario != "") {
-$comando = "UPDATE `funcionarios` SET `nomeCompleto` = '$nomeFuncionario', `cpf` = '$cpfFuncionario', `telefone` = '$telefoneFuncionario' WHERE `funcionarios`.`id` = '$funcionario_edit'";
+$comando = "UPDATE `funcionarios` SET `nomeComp` = '$nomeFuncionario', `cpf` = '$cpfFuncionario', `telefone` = '$telefoneFuncionario' WHERE `funcionarios`.`id` = '$funcionario_edit'";
 mysqli_query($conexao, $comando);
 header('Location: ../index.php?retorno=8.8');
     

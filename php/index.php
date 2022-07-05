@@ -455,7 +455,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
                   $funcser = mysqli_query($conexao, $funcsser);
                   
                   while ($funcs_fu = mysqli_fetch_assoc($funcser)) {
-                  $nomeserente_fu = $funcs_fu['nomeCompleto'];
+                  $nomeserente_fu = $funcs_fu['nomeComp'];
                   $idfuncion = $funcs_fu['id'];
                   
 
@@ -708,7 +708,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
                 $editar_pet_func = mysqli_query($conexao, $edit_pet_funcionario);
                 while ($func_pet = mysqli_fetch_assoc($editar_pet_func)){
 
-                $nomeFunc = $func_pet['nomeCompleto'];
+                $nomeFunc = $func_pet['nomeComp'];
                 $idFunc = $func_pet['id'];
 
                 echo"<option value='$idFunc'>$nomeFunc</option>";
@@ -912,7 +912,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
                   $res_fun = mysqli_query($conexao, $com_fun);
                   while ($fun = mysqli_fetch_assoc($res_fun)) {
                   
-                  $nome_fun = $fun['nomeCompleto'];
+                  $nome_fun = $fun['nomeComp'];
                   $id_fun = $fun['id'];
 
                   echo "<option value='$id_fun'>$nome_fun</option>";
@@ -1099,7 +1099,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
                   $res_fun = mysqli_query($conexao, $com_fun);
                   while ($fun = mysqli_fetch_assoc($res_fun)) {
                   
-                  $nome_fun = $fun['nomeCompleto'];
+                  $nome_fun = $fun['nomeComp'];
                   $id_fun = $fun['id'];
 
                   echo "<option value='$id_fun'>$nome_fun</option>";
@@ -1619,7 +1619,7 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
             <td><p class="card-text"><b>Serviço: </b><?=$z['descricao']?></p></td>
           </tr>
           <tr>
-            <td><p class="card-text"><b>Funcionário dirigente: </b><?=$z['nomeCompleto']?></p></td>
+            <td><p class="card-text"><b>Funcionário dirigente: </b><?=$z['nomeComp']?></p></td>
           </tr>
         </table>
 
