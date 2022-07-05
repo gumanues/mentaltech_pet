@@ -1281,7 +1281,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
         INNER JOIN servicos S on S.id = A.servicos_id
         INNER JOIN pets P ON P.id = A.pets_id
         INNER JOIN clientes C ON C.id = P.clientes_id
-        WHERE A.id = '$id_multa'"; 
+        "; 
         $com_mul = mysqli_query($conexao, $comando_mul);
         $mul = mysqli_fetch_assoc($com_mul); 
           
@@ -1343,8 +1343,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
                     $comando_mulltas = "SELECT * FROM agendamento A 
                     INNER JOIN servicos S on S.id = A.servicos_id
                     INNER JOIN pets P ON P.id = A.pets_id
-                    INNER JOIN clientes C ON C.id = P.clientes_id
-                    WHERE A.id = '$id_mu'"; 
+                    INNER JOIN clientes C ON C.id = P.clientes_id"; 
                     $com_mulltae = mysqli_query($conexao, $comando_mulltas);
                     $mull = mysqli_fetch_assoc($com_mulltae); 
                   
@@ -1425,6 +1424,10 @@ WHERE C.nomeCompleto LIKE '".$pesquisa."%'";
 
 }
 
+$comando_status = "SELECT * FROM agendamento A";
+$sql_status = mysqli_query($conexao, $comando_status);
+$x = mysqli_fetch_assoc($sql_status);
+
 $resultado=mysqli_query($conexao, $comando);
 while($z = mysqli_fetch_assoc($resultado)){
 
@@ -1485,7 +1488,7 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
                 <li><form action="editar/editarStatus.php" method="post"><button class="dropdown-item" type="submit">
                 <input type="hidden" name="status" value="0">
-                <input type="hidden" name="edit_status" value="<?=$z['id']?>">
+                <input type="hidden" name="edit_status" value="<?=$x['id']?>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-clock" viewBox="0 0 16 16">
                       <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
@@ -1495,7 +1498,7 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
                   </button></form></li>
                 <li><form action="editar/editarStatus.php" method="post"><button class="dropdown-item" type="submit">
                 <input type="hidden" name="status" value="1">
-                <input type="hidden" name="edit_status" value="<?=$z['id']?>">
+                <input type="hidden" name="edit_status" value="<?=$x['id']?>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-arrow-down-right-circle" viewBox="0 0 16 16">
                       <path fill-rule="evenodd"
@@ -1505,7 +1508,7 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
                   </button></form></li>
                 <li><form action="editar/editarStatus.php" method="post"><button class="dropdown-item" type="submit">
                 <input type="hidden" name="status" value="3">
-                <input type="hidden" name="edit_status" value="<?=$z['id']?>">
+                <input type="hidden" name="edit_status" value="<?=$x['id']?>">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                       class="bi bi-check-circle" viewBox="0 0 16 16">
                       <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
@@ -1547,10 +1550,10 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
                     </table>
                   </div>
                   <input type="hidden" name="status" value="2">
-                  <input type="hidden" name="edit_status" value="<?=$z['id']?>">
+                  <input type="hidden" name="edit_status" value="<?=$x['id']?>">
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-primary">Editar</button>
+                    <button type="submit" class="btn btn-primary">Gerar</button>
                   </div>
                 </form>
               </div>
@@ -1569,7 +1572,7 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
           </li>
           <li class="nav-item">
             <form action="gerarPDF.php" method="POST">
-              <input type="hidden" name="idPDF" value="<?=$z['id']?>">
+              <input type="hidden" name="idPDF" value="<?=$x['id']?>">
             <button type="submit" class="nav-link text-dark" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                 fill="currentColor" class="bi bi-filetype-pdf" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
