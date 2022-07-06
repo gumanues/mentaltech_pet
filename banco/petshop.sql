@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Tempo de geração: 29-Jun-2022 às 02:45
+-- Tempo de geração: 06-Jul-2022 às 02:01
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -11,6 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+CREATE DATABASE petshop;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -20,7 +21,7 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `petshop`
 --
-CREATE DATABASE petshop;
+
 -- --------------------------------------------------------
 
 --
@@ -43,14 +44,10 @@ CREATE TABLE `agendamento` (
 --
 
 INSERT INTO `agendamento` (`id`, `data`, `status`, `horarioInicio`, `horarioFinal`, `pets_id`, `funcionarios_id`, `servicos_id`) VALUES
-(2, '2022-06-15', '1', '08:15:00', '09:15:00', 3, 3, 1),
-(3, '2022-07-16', '2', '02:09:00', '22:09:00', 1, 1, 1),
-(4, '2022-06-30', '3', '10:30:00', '11:00:00', 4, 4, 3),
-(5, '2022-06-30', '0', '13:30:00', '14:25:00', 2, 1, 5),
-(6, '2022-07-01', '1', '16:20:00', '17:30:24', 5, 2, 4),
-(7, '2022-07-04', '2', '13:30:00', '17:30:24', 1, 3, 8),
-(8, '2022-07-04', '1', '08:15:00', '11:30:00', 3, 2, 7),
-(10, '2022-06-30', '2', '16:20:00', '17:40:40', 6, 2, 1);
+(3, '2022-07-06', '2', '10:25:00', '13:30:00', 2, 1, 4),
+(4, '2022-07-06', '0', '09:30:00', '18:30:00', 3, 1, 3),
+(5, '2022-07-06', '0', '13:35:00', '15:35:00', 2, 2, 5),
+(6, '2022-07-07', '0', '10:45:00', '12:35:00', 3, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -73,12 +70,9 @@ CREATE TABLE `clientes` (
 --
 
 INSERT INTO `clientes` (`id`, `nomeCompleto`, `email`, `cpf`, `telefone`, `CEP`, `numero`) VALUES
-(1, 'Poliana Amaral', 'poliamaral@email.com', 0, 99999999, 123456, 12),
-(2, 'Juliana Pontes', 'jupontes@email.com', 11111111111, 88888888, 543210, 158),
-(3, 'Celton Gomes', 'centonG22@email.com', 636363636, 8989898989, 10101010, 745),
-(4, 'Larissa Helena ', 'Larihelena@email.com', 565656565, 0, 5445642, 456),
-(5, 'Mario Fernando', 'fernandomario23@gmail.com', 56596955, 445445445, 4545452, 236),
-(6, 'Viviane Klint ', 'viviklint@email.com', 565652124, 12545121, 6232323, 125);
+(1, 'Caio Zuttra', 'caio@gmail.com', 111111, 1232323, 21323, 1232),
+(2, 'juliana amaral', 'juliana@gmail.com', 4534545, 545435, 767776, 7),
+(3, 'Melissa Fernandes', 'melissa@gmail.com', 4324324, 343434, 434343, 3);
 
 -- --------------------------------------------------------
 
@@ -88,7 +82,7 @@ INSERT INTO `clientes` (`id`, `nomeCompleto`, `email`, `cpf`, `telefone`, `CEP`,
 
 CREATE TABLE `funcionarios` (
   `id` int(11) NOT NULL,
-  `nomeCompleto` varchar(255) NOT NULL,
+  `nomeComp` varchar(255) NOT NULL,
   `cpf` bigint(20) NOT NULL,
   `telefone` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -97,11 +91,11 @@ CREATE TABLE `funcionarios` (
 -- Extraindo dados da tabela `funcionarios`
 --
 
-INSERT INTO `funcionarios` (`id`, `nomeCompleto`, `cpf`, `telefone`) VALUES
-(1, 'Amanda Venon', 888888888, 55555555),
-(2, 'Daiane Souza', 89562324, 77777777),
-(3, 'Arthur Silva', 87775634, 55662566),
-(4, 'Priscila Mendes', 874524325, 142367954);
+INSERT INTO `funcionarios` (`id`, `nomeComp`, `cpf`, `telefone`) VALUES
+(1, 'Helen mendes', 1233423, 0),
+(2, 'Viviane Gomez', 1234567, 32434234),
+(3, 'Bernardo Reis', 12345566, 0),
+(4, 'Felipe Simas', 12309675, 0);
 
 -- --------------------------------------------------------
 
@@ -120,8 +114,7 @@ CREATE TABLE `multa` (
 --
 
 INSERT INTO `multa` (`id`, `valor`, `agendamento_id`) VALUES
-(1, '15.00', 3),
-(2, '10.00', 5);
+(4, '5.00', 3);
 
 -- --------------------------------------------------------
 
@@ -142,12 +135,9 @@ CREATE TABLE `pets` (
 --
 
 INSERT INTO `pets` (`id`, `nome`, `raca`, `dataNasc`, `clientes_id`) VALUES
-(1, 'Amora', 'Bulldog Francês', '2020-03-14', 1),
-(2, 'Jéssica', 'SRD', '2022-04-19', 2),
-(3, 'Preta', 'SRD', '2020-11-15', 3),
-(4, 'Budy', 'Beagle', '2018-09-13', 5),
-(5, 'Kelen', 'pincher ', '2019-08-04', 5),
-(6, 'Cleiton', 'Siamês ', '2021-09-06', 6);
+(1, 'mel', 'yorkshire ', '2022-07-06', 1),
+(2, 'berlinda', 'SRD', '2020-09-08', 2),
+(3, 'amora', 'bulldog francês ', '2020-03-14', 3);
 
 -- --------------------------------------------------------
 
@@ -166,12 +156,12 @@ CREATE TABLE `servicos` (
 --
 
 INSERT INTO `servicos` (`id`, `descricao`, `valor`) VALUES
-(1, 'Banho e tosa', '100.00'),
-(3, 'Consulta com a veterinária', '120.00'),
-(4, 'Vacinas ', '95.00'),
-(5, 'Banho ', '60.00'),
-(7, 'Creche - Meio período ', '80.00'),
-(8, 'Creche - Integral', '160.00');
+(1, 'Banho e tosa', '70.00'),
+(2, 'Vacinas', '90.00'),
+(3, 'Banho', '45.00'),
+(4, 'Consulta com a vet', '120.00'),
+(5, 'creche - meio período ', '80.00'),
+(6, 'creche - Integral', '120.00');
 
 -- --------------------------------------------------------
 
@@ -190,7 +180,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `usuario`, `senha`) VALUES
-(1, 'karol', '1234');
+(1, 'mentaltech', 'c4ca4238a0b923820dcc509a6f75849b');
 
 --
 -- Índices para tabelas despejadas
@@ -251,13 +241,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `agendamento`
 --
 ALTER TABLE `agendamento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `funcionarios`
@@ -269,19 +259,19 @@ ALTER TABLE `funcionarios`
 -- AUTO_INCREMENT de tabela `multa`
 --
 ALTER TABLE `multa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `pets`
 --
 ALTER TABLE `pets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `servicos`
 --
 ALTER TABLE `servicos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
