@@ -229,7 +229,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
   <div class="container-fluid">
     <a class="navbar-brand text-light">Petshop</a>
     <form action="index.php" method="GET" class="d-flex" role="pesquisa">
-      <input class="form-control me-2" type="pesquisa" name="pesquisa" aria-label="pesquisa">
+      <input class="form-control me-2" type="pesquisa" placeholder="Nome do Cliente" name="pesquisa" aria-label="pesquisa">
       <button class="btn btn-outline-light" type="submit">Pesquisar</button>
     </form>
     <button class="navbar-toggler bg-light bg-opacity-75" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
@@ -1406,11 +1406,11 @@ $comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servic
 if(isset($_GET['filtrar']) && $_GET['filtrar'] == "ASC") {
   $comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`data` ASC";
 }
-if(isset($_GET['filtrar']) && $_GET['filtrar'] == "DESC") {
+else if(isset($_GET['filtrar']) && $_GET['filtrar'] == "DESC") {
   $comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`data` DESC";
 }
 
-if(isset($_GET['pesquisa']) && $_GET['pesquisa'] != ""){
+else if(isset($_GET['pesquisa']) && $_GET['pesquisa'] != ""){
 
   $pesquisa = $_GET['pesquisa'];
 
