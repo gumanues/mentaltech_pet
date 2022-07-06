@@ -19,10 +19,10 @@ Site desenvolvido para Situação de Aprendizagem
 **DELETAR SERVIÇOS**
 ![deletar](https://user-images.githubusercontent.com/102107721/177436624-efe0624d-8bf6-42b8-b282-9c3f09410015.png)
 
-✅ METODOS DE PESQUISA
-✅ RESPONSIVIDADE
-✅ VALIDAÇÕES
-✅ LOGIN
-✅ PDF
+✅ METODOS DE PESQUISA <br>
+✅ RESPONSIVIDADE <br>
+✅ VALIDAÇÕES <br>
+✅ LOGIN <br>
+✅ PDF <br>
 
 ❌ NARRAÇÃO
