@@ -10,7 +10,7 @@ $v = mysqli_fetch_assoc($com);
 $verificação = $v['agendamento_id'];
 if($verificação != true) {
 
-    $comando = "DELETE FROM `agendamento` WHERE `agendamento`.`id` = '$servico_excluir'";
+    $comando = "DELETE FROM `agendamento` WHERE `agendamento`.`id_agendamento` = '$servico_excluir'";
     mysqli_query($conexao, $comando);
     header('Location: ../index.php?retorno=19.19');
 

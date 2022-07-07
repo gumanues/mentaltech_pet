@@ -20,7 +20,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `petshop`.`funcionarios` (
   `id` INT NULL AUTO_INCREMENT,
-  `nomeCompleto` VARCHAR(255) NOT NULL,
+  `nomeComp` VARCHAR(255) NOT NULL,
   `cpf` BIGINT NOT NULL,
   `telefone` BIGINT NOT NULL,
   PRIMARY KEY (`id`))
@@ -72,7 +72,7 @@ ENGINE = InnoDB;
 -- Table `petshop`.`agendamento`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `petshop`.`agendamento` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id_agendamento` INT NOT NULL AUTO_INCREMENT,
   `data` DATE NOT NULL,
   `status` ENUM('0', '1', '2', '3') NOT NULL COMMENT '0 = Em aberto\n1 = Em andamento \n2 = Concluido\n3 = Cancelado',
   `horarioInicio` TIME NOT NULL,

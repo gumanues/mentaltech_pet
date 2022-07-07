@@ -21,219 +21,220 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
     }
   </style>
   <title>Petshop</title>
-</head> 
+</head>
 
 <!-- Alertas -->
 <!--Cadastros erros -->
 <div id="alertas">
-    <?php if(isset($_GET['retorno'])==true && $_GET['retorno']==1){ ?>
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <span>Houve algum problema cadastrar o cliente!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-    <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==2){ ?>
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <span>Houve algum problema cadastrar o funcionario!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-    <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==3){ ?>
-	<div class="alert alert-success alert-dismissible fade show" role="alert">
-        <span>Houve algum problema cadastrar a modalidade!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==4){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <span>Houve algum problema cadastrar a multa!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==5){ ?>
-	<div class="alert alert-success alert-dismissible fade show" role="alert">
-        <span>Houve algum problema cadastrar o pet!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==6){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Houve algum problema cadastrar serviço!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-    <!-- Cadastros sucesso -->
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==1.1){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Cliente cadastrado com sucesso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==2.2){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Funcionario cadastrado com sucesso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==3.3){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Modalidade cadastrada com sucesso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==4.4){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Multa cadastrada com sucesso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==5.5){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Pet cadastrado com sucesso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==6.6){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Serviço cadastrado com sucesso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-    <!-- Editar erro -->
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==7){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Houve algum problema editar o Cliente!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==8){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Houve algum problema editar o Funcionário!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==9){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Houve algum problema editar a Modalidade Serviço!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==10){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Houve algum problema editar a Multa!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==11){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Houve algum problema editar o Pet!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==12){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Houve algum problema editar o Serviço!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==13){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Houve algum problema editar o Status!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div> 
-    <!-- editar sucesso -->
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==7.7){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Cliente editado com sucesso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==8.8){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Funcionário editado com sucesso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==9.9){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Modalidade editada com sucesso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==10.10){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Multa editada com sucesso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==11.11){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Pet editado com sucesso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==12.12){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Serviço editado com sucesso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==13.13){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Status editado com sucesso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-    <!-- excluir erro -->
-    <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']== 14){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Houve algum problema excluir o Cliente!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']== 15){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Houve algum problema excluir o Funcionário!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']== 16){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Houve algum problema excluir a Modalidade Serviço!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']== 17){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Houve algum problema excluir a Multa!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==18){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Houve algum problema excluir o Pet!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==19){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Houve algum problema excluir o Serviço!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-    <!-- excluir sucesso -->
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==14.14){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Cliente excluido com sucesso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==15.15){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Funcionário excluido com sucesso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==16.16){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Modalidade excluida com sucesso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==17.17){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Multa excluida com sucesso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==18.18){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Pet excluido com sucesso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-	<?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==19.19){ ?>
-	<div class="alert alert-warning alert-dismissible fade show" role="alert">
-		<span>Serviço excluido com sucesso!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
+  <?php if(isset($_GET['retorno'])==true && $_GET['retorno']==1){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Houve algum problema cadastrar o cliente!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==2){ ?>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <span>Houve algum problema cadastrar o funcionario!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==3){ ?>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <span>Houve algum problema cadastrar a modalidade!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==4){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Houve algum problema cadastrar a multa!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==5){ ?>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <span>Houve algum problema cadastrar o pet!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==6){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Houve algum problema cadastrar serviço!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <!-- Cadastros sucesso -->
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==1.1){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Cliente cadastrado com sucesso!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==2.2){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Funcionario cadastrado com sucesso!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==3.3){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Modalidade cadastrada com sucesso!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==4.4){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Multa cadastrada com sucesso!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==5.5){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Pet cadastrado com sucesso!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==6.6){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Serviço cadastrado com sucesso!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <!-- Editar erro -->
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==7){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Houve algum problema editar o Cliente!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==8){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Houve algum problema editar o Funcionário!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==9){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Houve algum problema editar a Modalidade Serviço!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==10){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Houve algum problema editar a Multa!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==11){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Houve algum problema editar o Pet!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==12){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Houve algum problema editar o Serviço!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==13){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Houve algum problema editar o Status!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <!-- editar sucesso -->
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==7.7){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Cliente editado com sucesso!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==8.8){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Funcionário editado com sucesso!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==9.9){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Modalidade editada com sucesso!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==10.10){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Multa editada com sucesso!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==11.11){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Pet editado com sucesso!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==12.12){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Serviço editado com sucesso!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==13.13){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Status editado com sucesso!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <!-- excluir erro -->
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']== 14){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Houve algum problema excluir o Cliente!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']== 15){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Houve algum problema excluir o Funcionário!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']== 16){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Houve algum problema excluir a Modalidade Serviço!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']== 17){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Houve algum problema excluir a Multa!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==18){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Houve algum problema excluir o Pet!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==19){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Houve algum problema excluir o Serviço!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <!-- excluir sucesso -->
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==14.14){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Cliente excluido com sucesso!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==15.15){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Funcionário excluido com sucesso!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==16.16){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Modalidade excluida com sucesso!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==17.17){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Multa excluida com sucesso!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==18.18){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Pet excluido com sucesso!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+  <?php }else if(isset($_GET['retorno'])==true && $_GET['retorno']==19.19){ ?>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <span>Serviço excluido com sucesso!</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
 
-	<?php } ?>
+  <?php } ?>
 </div>
 <!-- Navegação -->
 <nav class="navbar text-light bg-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand text-light">Petshop</a>
     <form action="index.php" method="GET" class="d-flex" role="pesquisa">
-      <input class="form-control me-2" type="pesquisa" placeholder="Nome do Cliente" name="pesquisa" aria-label="pesquisa">
+      <input class="form-control me-2" type="pesquisa" placeholder="Nome do Cliente" name="pesquisa"
+        aria-label="pesquisa">
       <button class="btn btn-outline-light" type="submit">Pesquisar</button>
     </form>
-    <button class="navbar-toggler bg-light bg-opacity-75" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-      aria-controls="offcanvasNavbar">
+    <button class="navbar-toggler bg-light bg-opacity-75" type="button" data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="offcanvasNavbar"
@@ -381,7 +382,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             </li>
           </ul>
         </div>
-       
+
         <div>
           <a type="button" class="mt-2 dropdown-item btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Multas
@@ -389,9 +390,9 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
         </div>
         <div>
           <form action="sair.php" method="GET">
-          <input type="hidden" name="sair">
-          <button type="submit" class="mt-3 dropdown-item btn-primary">
-            Sair
+            <input type="hidden" name="sair">
+            <button type="submit" class="mt-3 dropdown-item btn-primary">
+              Sair
             </button>
           </form>
         </div>
@@ -437,7 +438,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
               <td>
                 <label for="pet" name="pet" class="form-label">Pet</label>
                 <select class="form-select" name="pet" id="pet">
-                 <?php
+                  <?php
                   $petsser = "SELECT * FROM pets";
                   $petser = mysqli_query($conexao, $petsser);
                   
@@ -456,7 +457,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
               <td>
                 <label for="funcionario" name="funcionario" class="form-label">Funcionário</label>
                 <select class="form-select" name="funcionario" id="funcionario">
-                <?php
+                  <?php
                   $funcsser = "SELECT * FROM funcionarios";
                   $funcser = mysqli_query($conexao, $funcsser);
                   
@@ -475,7 +476,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
               <td>
                 <label for="servico" name="servico" class="form-label">Serviço</label>
                 <select class="form-select" name="servico" id="servico">
-                <?php
+                  <?php
                   $servicsser = "SELECT * FROM servicos";
                   $servicser = mysqli_query($conexao, $servicsser);
                   
@@ -516,7 +517,8 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="nomeCompleto" name="nomeCompleto" class="form-label">Nome Completo</label>
-                <input type="text" class="form-control" id="nomeCompleto" maxlength="100" minlenght="4" name="nomeCompleto" required>
+                <input type="text" class="form-control" id="nomeCompleto" maxlength="100" minlenght="4"
+                  name="nomeCompleto" required>
               </td>
               <td>
                 <label for="email" name="email" class="form-label">E-mail</label>
@@ -532,7 +534,8 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="telefone" name="telefone" class="form-label">Telefone</label>
-                <input type="number" class="form-control" id="telefone" maxlength="12" minlenght="12" name="telefone" required>
+                <input type="number" class="form-control" id="telefone" maxlength="12" minlenght="12" name="telefone"
+                  required>
               </td>
             </tr>
             <tr>
@@ -588,7 +591,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
               <td>
                 <label for="nomeCliente" name="nomeCliente" class="form-label">Nome do Cliente</label>
                 <select class="form-select" name="nomeCliente" id="nomeCliente">
-                <?php  
+                  <?php  
                   $pets_cli = "SELECT * FROM clientes";
                   $pet_cli = mysqli_query($conexao, $pets_cli);
                   
@@ -628,19 +631,22 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="nomeFuncionario" name="nomeFuncionario" class="form-label">Nome Completo</label>
-                <input type="text" class="form-control" id="nomeFuncionario" maxlength="100" minlenght="4" name="nomeFuncionario" required>
+                <input type="text" class="form-control" id="nomeFuncionario" maxlength="100" minlenght="4"
+                  name="nomeFuncionario" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="cpfFuncionario" name="cpfFuncionario" class="form-label">CPF</label>
-                <input type="number" class="form-control" id="cpfFuncionario" maxlength="11" minlenght="11" name="cpfFuncionario" required>
+                <input type="number" class="form-control" id="cpfFuncionario" maxlength="11" minlenght="11"
+                  name="cpfFuncionario" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="telefoneFuncionario" name="telefoneFuncionario" class="form-label">Telefone</label>
-                <input type="number" class="form-control" id="telefoneFuncionario" maxlength="12" minlenght="12" name="telefoneFuncionario" required>
+                <input type="number" class="form-control" id="telefoneFuncionario" maxlength="12" minlenght="12"
+                  name="telefoneFuncionario" required>
               </td>
             </tr>
           </table>
@@ -704,18 +710,20 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="horarioInicio" name="horarioInicio" class="form-label">Horario Início</label>
-                <input type="time" class="form-control" id="horarioInicio" value="<?=$horarioInicio?>" name="horarioInicio" required>
+                <input type="time" class="form-control" id="horarioInicio" value="<?=$horarioInicio?>"
+                  name="horarioInicio" required>
               </td>
               <td>
                 <label for="horarioFinal" name="horarioFinal" class="form-label">Horario Final</label>
-                <input type="time" class="form-control" id="horarioFinal" value="<?=$horarioFinal?>" name="horarioFinal" required>
+                <input type="time" class="form-control" id="horarioFinal" value="<?=$horarioFinal?>" name="horarioFinal"
+                  required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="funcionario" name="funcionario" class="form-label">Funcionário</label>
                 <select class="form-select" name="funcionario" id="funcionario">
-                <?php 
+                  <?php 
                 $edit_pet_funcionario = "SELECT * FROM funcionarios";
                 $editar_pet_func = mysqli_query($conexao, $edit_pet_funcionario);
                 while ($func_pet = mysqli_fetch_assoc($editar_pet_func)){
@@ -733,7 +741,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
               <td>
                 <label for="servico" name="servico" class="form-label">Serviço</label>
                 <select class="form-select" name="servico" id="servico">
-                <?php 
+                  <?php 
                 $edit_pet_servico = "SELECT * FROM servicos";
                 $editar_pet_serv = mysqli_query($conexao, $edit_pet_servico);
                 while ($serv_pet = mysqli_fetch_assoc($editar_pet_serv)){
@@ -790,7 +798,8 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="nomeCompleto" name="nomeCompleto" class="form-label">Nome Completo</label>
-                <input type="text" class="form-control" id="nomeCompleto" maxlength="100" minlenght="4" name="nomeCompleto" required>
+                <input type="text" class="form-control" id="nomeCompleto" maxlength="100" minlenght="4"
+                  name="nomeCompleto" required>
               </td>
               <td>
                 <label for="email" name="email" class="form-label">E-mail</label>
@@ -806,7 +815,8 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="telefone" name="telefone" class="form-label">Telefone</label>
-                <input type="number" class="form-control" id="telefone" maxlength="12" minlenght="12" name="telefone" required>
+                <input type="number" class="form-control" id="telefone" maxlength="12" minlenght="12" name="telefone"
+                  required>
               </td>
             </tr>
             <tr>
@@ -816,7 +826,8 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
               </td>
               <td>
                 <label for="numero" name="numero" class="form-label">Nº</label>
-                <input type="number" class="form-control" id="numero" maxlength="8" minlenght="8" name="numero" required>
+                <input type="number" class="form-control" id="numero" maxlength="8" minlenght="8" name="numero"
+                  required>
               </td>
             </tr>
           </table>
@@ -845,7 +856,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
               <td>
                 <label for="pet_edit" name="pet_edit" class="form-label">Selecione o Pet</label>
                 <select class="form-select" name="pet_edit" id="pet_edit">
-                <?php
+                  <?php
 
                   $com_pet = "SELECT * FROM pets";
                   $resul_pet = mysqli_query($conexao, $com_pet);
@@ -936,19 +947,22 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="nomeFuncionario" name="nomeFuncionario" class="form-label">Nome Completo</label>
-                <input type="text" class="form-control" id="nomeFuncionario" maxlength="100" minlenght="4" name="nomeFuncionario" required>
+                <input type="text" class="form-control" id="nomeFuncionario" maxlength="100" minlenght="4"
+                  name="nomeFuncionario" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="cpfFuncionario" name="cpfFuncionario" class="form-label">CPF</label>
-                <input type="number" class="form-control" id="cpfFuncionario" maxlength="11" minlenght="11" name="cpfFuncionario" required>
+                <input type="number" class="form-control" id="cpfFuncionario" maxlength="11" minlenght="11"
+                  name="cpfFuncionario" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="telefoneFuncionario" name="telefoneFuncionario" class="form-label">Telefone</label>
-                <input type="number" class="form-control" id="telefoneFuncionario" maxlength="12" minlenght="12" name="telefoneFuncionario" required>
+                <input type="number" class="form-control" id="telefoneFuncionario" maxlength="12" minlenght="12"
+                  name="telefoneFuncionario" required>
               </td>
             </tr>
           </table>
@@ -974,7 +988,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
           <table>
             <tr>
               <td>
-              <label for="servico_excluir" name="servico_excluir" class="form-label">Selecione o serviço</label>
+                <label for="servico_excluir" name="servico_excluir" class="form-label">Selecione o serviço</label>
                 <select class="form-select" name="servico_excluir" id="servico_excluir">
                   <?php  
                   $com_servico = "SELECT * FROM agendamento";
@@ -1002,7 +1016,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
                   }?>
                 </select>
               </td>
-            </tr>       
+            </tr>
           </table>
         </div>
         <div class="modal-footer">
@@ -1104,7 +1118,8 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
           <table>
             <tr>
               <td>
-                <label for="funcionario_excluir" name="funcionario_excluir" class="form-label">Selecione o Funcionário</label>
+                <label for="funcionario_excluir" name="funcionario_excluir" class="form-label">Selecione o
+                  Funcionário</label>
                 <select class="form-select" name="funcionario_excluir" id="funcionario_excluir">
                   <?php
                   $com_fun = "SELECT * FROM funcionarios";
@@ -1144,13 +1159,15 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="descricaoServico" name="descricaoServico" class="form-label">Descrição do Serviço</label>
-                <input type="text" class="form-control" maxlength="100" minlenght="4" id="descricaoServico" name="descricaoServico" required>
+                <input type="text" class="form-control" maxlength="100" minlenght="4" id="descricaoServico"
+                  name="descricaoServico" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="valorServico" name="valorServico" class="form-label">Valor do Serviço</label>
-                <input type="number" class="form-control" maxlength="8" placeholder="350,00 R$" id="valorServico" name="valorServico" required>
+                <input type="number" class="form-control" maxlength="8" placeholder="350,00 R$" id="valorServico"
+                  name="valorServico" required>
               </td>
             </tr>
           </table>
@@ -1195,13 +1212,15 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="descricaoServico" name="descricaoServico" class="form-label">Descrição do Serviço</label>
-                <input type="text" class="form-control" id="descricaoServico" maxlength="100" minlenght="4"  name="descricaoServico" required>
+                <input type="text" class="form-control" id="descricaoServico" maxlength="100" minlenght="4"
+                  name="descricaoServico" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="valorServico" name="valorServico" class="form-label">Valor do Serviço</label>
-                <input type="number" class="form-control" maxlength="6" placeholder="350,00 R$" id="valorServico" name="valorServico" required>
+                <input type="number" class="form-control" maxlength="6" placeholder="350,00 R$" id="valorServico"
+                  name="valorServico" required>
               </td>
             </tr>
           </table>
@@ -1227,7 +1246,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
           <table>
             <tr>
               <td>
-              <label for="servico_excluir" name="servico_excluir" class="form-label">Selecione o Serviço</label>
+                <label for="servico_excluir" name="servico_excluir" class="form-label">Selecione o Serviço</label>
                 <select class="form-select" name="servico_excluir" id="servico_excluir">
                   <?php
                   $com_ser = "SELECT * FROM servicos";
@@ -1262,7 +1281,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" style="height: 300px; overflow-y: scroll;">
-      <table class='text-center'> 
+        <table class='text-center'>
           <tr class='m-5'>
             <td class='pe-3'>Cliente</td>
             <td class='pe-3'>Telefone</td>
@@ -1270,25 +1289,28 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <td class='pe-3'>Multa</td>
             <td class='pe-3'>Editar</td>
             <td class='pe-3'>Excluir</td>
-        </tr>
-        <?php 
-        $c_multas = "SELECT * FROM multa";
-        $res_multas = mysqli_query($conexao, $c_multas);
-        while ($multas = mysqli_fetch_assoc($res_multas)) {
-        $id_multa = $multas['id'];
+          </tr>
+          <?php 
         
-        $comando_mul = "SELECT * FROM agendamento A 
-        INNER JOIN servicos S on S.id = A.servicos_id
+        $comando_mul = "SELECT * FROM multa"; 
+        $res_multas = mysqli_query($conexao, $comando_mul);
+        while ($multas = mysqli_fetch_assoc($res_multas)) {
+
+        $comando_multa= "SELECT * FROM agendamento A
+        INNER JOIN servicos S ON S.id = A.servicos_id
         INNER JOIN pets P ON P.id = A.pets_id
         INNER JOIN clientes C ON C.id = P.clientes_id
-        "; 
-        $com_mul = mysqli_query($conexao, $comando_mul);
-        $mul = mysqli_fetch_assoc($com_mul); 
-          
+        WHERE A.id_agendamento = ".$multas['agendamento_id'];
+        $res_multa = mysqli_query($conexao, $comando_multa);
+        $multa = mysqli_fetch_assoc($res_multa);
+
+
+        $id_multa = $multas['id'];
         $valor = $multas['valor'];
-        $nome_servic = $mul['descricao'];
-        $nm_usuario = $mul['nomeCompleto'];
-        $nr_usuario = $mul['numero'];
+        $nome_servic = $multa['descricao'];
+        $nm_usuario = $multa['nomeCompleto'];
+        $nr_usuario = $multa['numero'];
+
 
         echo '
           <tr class="m-5">
@@ -1305,11 +1327,15 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
               <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
               <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
             </svg></button></form></td>
+          </tr>
+          <tr>
+          <td> <hr> </td>
           </tr>';
+          
         }
 
-        ?> 
-      </table> 
+        ?>
+        </table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
@@ -1337,7 +1363,6 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
                   $res_clienes = mysqli_query($conexao, $com_multa);
                   while ($multaes = mysqli_fetch_assoc($res_clienes)) {
 
-                    $id_mu = $multaes['id'];
                     $id_multae = $multaes['agendamento_id'];
 
                     $comando_mulltas = "SELECT * FROM agendamento A 
@@ -1374,40 +1399,58 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
 
 <body class="bg-light">
 
-<!-- Filtrar -->
-<div class="pt-2">
+  <!-- Filtrar -->
+  <div class="pt-2">
     <table>
       <tr>
         <td>
           <label style="margin-top: 5px;" for="filtrar" name="filtrar" class="form-label">Filtrar por </label>
-          </td>
-          <td>
-            <div>
-            <form action="index.php" method="get">
-          <select class="form-select" name="filtrar" id="filtrar">
-            <option value="ASC">Filtrar por ordem crescente</option>
-            <option value="DESC">Filtrar por ordem decrescente</option>
-          </select>
-          </td>
-          <td>
-          <button class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel" viewBox="0 0 16 16">
-            <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"/>
-          </svg></button>
-          </form>
-          </div>
         </td>
-      </tr>
-    </table>
-</div>
-<!-- Comandos de visualização de serviços -->
-<?php 
-$comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`data` DESC";
+        <td>
+          <div>
+            <form action="index.php" method="get">
+              <select class="form-select" name="filtrar" id="filtrar">
+                <option value="ASC">Filtrar por ordem crescente</option>
+                <option value="DESC">Filtrar por ordem decrescente</option>
+              </select>
+        </td>
+        <td>
+          <button class="btn"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+              class="bi bi-funnel" viewBox="0 0 16 16">
+              <path
+                d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z" />
+            </svg></button>
+          </form>
+  </div>
+  </td>
+  </tr>
+  </table>
+  </div>
+  <!-- Comandos de visualização de serviços -->
+  <?php 
+
+$comando = "SELECT * FROM agendamento A 
+INNER JOIN servicos S ON S.id = A.servicos_id 
+INNER JOIN funcionarios F ON F.id = A.funcionarios_id 
+INNER JOIN pets P ON P.id = A.pets_id 
+INNER JOIN clientes C ON C.id = P.clientes_id 
+ORDER BY `A`.`data` DESC";
 
 if(isset($_GET['filtrar']) && $_GET['filtrar'] == "ASC") {
-  $comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`data` ASC";
+  $comando = "SELECT * FROM agendamento A 
+  INNER JOIN servicos S ON S.id = A.servicos_id 
+  INNER JOIN funcionarios F ON F.id = A.funcionarios_id 
+  INNER JOIN pets P ON P.id = A.pets_id 
+  INNER JOIN clientes C ON C.id = P.clientes_id 
+  ORDER BY `A`.`data` ASC";
 }
 else if(isset($_GET['filtrar']) && $_GET['filtrar'] == "DESC") {
-  $comando = "SELECT * FROM agendamento A INNER JOIN servicos S on S.id = A.servicos_id INNER JOIN funcionarios F ON F.id = A.funcionarios_id INNER JOIN pets P ON P.id = A.pets_id INNER JOIN clientes C ON C.id = P.clientes_id ORDER BY `A`.`data` DESC";
+  $comando = "SELECT * FROM agendamento A 
+  INNER JOIN servicos S ON S.id = A.servicos_id 
+  INNER JOIN funcionarios F ON F.id = A.funcionarios_id 
+  INNER JOIN pets P ON P.id = A.pets_id 
+  INNER JOIN clientes C ON C.id = P.clientes_id 
+  ORDER BY `A`.`data` DESC";
 }
 
 else if(isset($_GET['pesquisa']) && $_GET['pesquisa'] != ""){
@@ -1415,21 +1458,16 @@ else if(isset($_GET['pesquisa']) && $_GET['pesquisa'] != ""){
   $pesquisa = $_GET['pesquisa'];
 
 $comando = "SELECT * FROM agendamento A 
-INNER JOIN servicos S on S.id = A.servicos_id
+INNER JOIN servicos S ON S.id = A.servicos_id
 INNER JOIN funcionarios F ON F.id = A.funcionarios_id
 INNER JOIN pets P ON P.id = A.pets_id
 INNER JOIN clientes C ON C.id = P.clientes_id
 WHERE C.nomeCompleto LIKE '".$pesquisa."%'";
 
-
 }
 
-$comando_status = "SELECT * FROM agendamento A";
-$sql_status = mysqli_query($conexao, $comando_status);
-$x = mysqli_fetch_assoc($sql_status);
-
 $resultado=mysqli_query($conexao, $comando);
-while($z = mysqli_fetch_assoc($resultado)){
+while ($z = mysqli_fetch_assoc($resultado)) {
 
 $dt = $z['data'];
 $hi = $z['horarioInicio'];
@@ -1437,20 +1475,20 @@ $hf = $z['horarioFinal'];
 
 
 $data = date('d/m/Y', strtotime($dt));
-
 $horarioI = date('H:i', strtotime($hi));
 $horarioF = date('H:i', strtotime($hf));
 
-?>
-  <header>
-    <div class="mt-2 card text-center">
-      <div class="bg-light card-header">
-        <ul class="nav nav-tabs card-header-tabs">
-          <li class="nav-item">
-            <div class="dropdown">
-              <a class="nav-link text-dark active" aria-current="true" href="#" id="dropdownMenu2"
-                data-bs-toggle="dropdown" aria-expanded="false">
-<?php
+
+
+echo "<header>
+    <div class='mt-2 card text-center'>
+      <div class='bg-light card-header'>
+        <ul class='nav nav-tabs card-header-tabs'>
+          <li class='nav-item'>
+            <div class='dropdown'>
+              <a class='nav-link text-dark active' aria-current='true' href='#' id='dropdownMenu2'
+                data-bs-toggle='dropdown' aria-expanded='false'>";
+
 
 $stat = $z['status'];
 
@@ -1481,144 +1519,182 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
   d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
 </svg>';
 }
-                   
 ?>
 
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                <li><form action="editar/editarStatus.php" method="post"><button class="dropdown-item" type="submit">
-                <input type="hidden" name="status" value="0">
-                <input type="hidden" name="edit_status" value="<?=$x['id']?>">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                      class="bi bi-clock" viewBox="0 0 16 16">
-                      <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
-                      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
-                    </svg>
-                    Em aberto
-                  </button></form></li>
-                <li><form action="editar/editarStatus.php" method="post"><button class="dropdown-item" type="submit">
-                <input type="hidden" name="status" value="1">
-                <input type="hidden" name="edit_status" value="<?=$x['id']?>">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                      class="bi bi-arrow-down-right-circle" viewBox="0 0 16 16">
-                      <path fill-rule="evenodd"
-                        d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.854 5.146a.5.5 0 1 0-.708.708L9.243 9.95H6.475a.5.5 0 1 0 0 1h3.975a.5.5 0 0 0 .5-.5V6.475a.5.5 0 1 0-1 0v2.768L5.854 5.146z" />
-                    </svg>
-                    Em andamento
-                  </button></form></li>
-                <li><form action="editar/editarStatus.php" method="post"><button class="dropdown-item" type="submit">
-                <input type="hidden" name="status" value="3">
-                <input type="hidden" name="edit_status" value="<?=$x['id']?>">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                      class="bi bi-check-circle" viewBox="0 0 16 16">
-                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                      <path
-                        d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
-                    </svg>
-                    Concluido
-                  </button></form></li>
-                  <li><button class="dropdown-item" data-bs-toggle="modal"
-                    data-bs-target="#exampleModalMulta1">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                      class="bi bi-exclamation-circle" viewBox="0 0 16 16">
-                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                      <path
-                        d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
-                    </svg>
-                    Cancelado
-                  </button></li>
-              </ul>
-            </div>
-            </a>
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <li>
+      <form action="editar/editarStatus.php" method="post"><button class="dropdown-item" type="submit">
+          <input type="hidden" name="status" value="0">
+          <input type="hidden" name="edit_status" value="<?=$z['id_agendamento']?>">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock"
+            viewBox="0 0 16 16">
+            <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z" />
+            <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+          </svg>
+          Em aberto
+        </button></form>
+    </li>
+    <li>
+      <form action="editar/editarStatus.php" method="post"><button class="dropdown-item" type="submit">
+          <input type="hidden" name="status" value="1">
+          <input type="hidden" name="edit_status" value="<?=$z['id_agendamento']?>">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-arrow-down-right-circle" viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+              d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.854 5.146a.5.5 0 1 0-.708.708L9.243 9.95H6.475a.5.5 0 1 0 0 1h3.975a.5.5 0 0 0 .5-.5V6.475a.5.5 0 1 0-1 0v2.768L5.854 5.146z" />
+          </svg>
+          Em andamento
+        </button></form>
+    </li>
+    <li>
+      <form action="editar/editarStatus.php" method="post"><button class="dropdown-item" type="submit">
+          <input type="hidden" name="status" value="3">
+          <input type="hidden" name="edit_status" value="<?=$z['id_agendamento']?>">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle"
+            viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+            <path
+              d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+          </svg>
+          Concluido
+        </button></form>
+    </li>
+    <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModalMulta1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+          class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+          <path
+            d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
+        </svg>
+        Cancelado
+      </button></li>
+  </ul>
+  </div>
+  </a>
 
-            <div class="modal fade" id="exampleModalMulta1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <form action="cadastrar/cadastrarMulta.php" method="post">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Gerar Multa</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <table>
-                      <tr>
-                        <td>
-                          <label for="multa" name="multa" class="form-label">Valor</label>
-                          <input type="number" class="form-control" id="multa" name="multa" required>
-                        </td>
-                      </tr>
-                    </table>
-                  </div>
-                  <input type="hidden" name="status" value="2">
-                  <input type="hidden" name="edit_status" value="<?=$x['id']?>">
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <button type="submit" class="btn btn-primary">Gerar</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-
-          </li>
-          <li class="nav-item">
-            <a type="button" class="dropdown-item btn-primary nav-link text-dark" data-bs-toggle="modal"
-              data-bs-target="#exampleModal1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                <path
-                  d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-              </svg></a>
-          </li>
-          <li class="nav-item">
-            <form action="gerarPDF.php" method="POST">
-              <input type="hidden" name="idPDF" value="<?=$x['id']?>">
-            <button type="submit" class="nav-link text-dark" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                fill="currentColor" class="bi bi-filetype-pdf" viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                  d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.6 11.85H0v3.999h.791v-1.342h.803c.287 0 .531-.057.732-.173.203-.117.358-.275.463-.474a1.42 1.42 0 0 0 .161-.677c0-.25-.053-.476-.158-.677a1.176 1.176 0 0 0-.46-.477c-.2-.12-.443-.179-.732-.179Zm.545 1.333a.795.795 0 0 1-.085.38.574.574 0 0 1-.238.241.794.794 0 0 1-.375.082H.788V12.48h.66c.218 0 .389.06.512.181.123.122.185.296.185.522Zm1.217-1.333v3.999h1.46c.401 0 .734-.08.998-.237a1.45 1.45 0 0 0 .595-.689c.13-.3.196-.662.196-1.084 0-.42-.065-.778-.196-1.075a1.426 1.426 0 0 0-.589-.68c-.264-.156-.599-.234-1.005-.234H3.362Zm.791.645h.563c.248 0 .45.05.609.152a.89.89 0 0 1 .354.454c.079.201.118.452.118.753a2.3 2.3 0 0 1-.068.592 1.14 1.14 0 0 1-.196.422.8.8 0 0 1-.334.252 1.298 1.298 0 0 1-.483.082h-.563v-2.707Zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638H7.896Z" />
-              </svg></button>
-              </form>
-          </li>
-        </ul>
-      </div>
-      <div class="d-flex justify-content-evenly card-body">
-        <table>
-          <tr>
-            <td><p class="card-text"><b>Data de cadastro: </b><?=$data?></p></td>
-          </tr>
-          <tr>
-            <td><p class="card-text"><b>Horario de início: </b><?=$horarioI?></p></td>
-          </tr>
-          <tr>
-            <td><p class="card-text"><b>Horario de término: </b><?=$horarioF?></p></td>
-          </tr>
-        </table>
-        <table>
-          <tr>
-            <td><p class="card-text"><b>Cliente: </b><?=$z['nomeCompleto']?></p></td>
-          </tr>
-          <tr>
-            <td><p class="card-text"><b>Telefone: </b><?=$z['telefone']?></p></td>
-          </tr>
-        </table>
-        <table>
-          <tr>
-            <td><p class="card-text"><b>Raça e/ou nome do Pet: </b><?=$z['nome']. ' - ' . $z['raca']?></p></td>
-          </tr>
-          <tr>
-            <td><p class="card-text"><b>Serviço: </b><?=$z['descricao']?></p></td>
-          </tr>
-          <tr>
-            <td><p class="card-text"><b>Funcionário dirigente: </b><?=$z['nomeComp']?></p></td>
-          </tr>
-        </table>
-
-        <p class="card-text text-muted"></p>
-      </div>
+  <div class="modal fade" id="exampleModalMulta1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="cadastrar/cadastrarMulta.php" method="post">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Gerar Multa</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <td>
+                <label for="multa" name="multa" class="form-label">Valor</label>
+                <input type="number" class="form-control" id="multa" name="multa" required>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <input type="hidden" name="status" value="2">
+        <input type="hidden" name="edit_status" value="<?=$z['id_agendamento']?>">
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="submit" class="btn btn-primary">Gerar</button>
+        </div>
+      </form>
     </div>
+  </div>
+</div>
+
+
+  </li>
+  <li class="nav-item">
+    <a type="button" class="dropdown-item btn-primary nav-link text-dark" data-bs-toggle="modal"
+      data-bs-target="#exampleModal1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+        class="bi bi-plus-circle" viewBox="0 0 16 16">
+        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+        <path
+          d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+      </svg></a>
+  </li>
+  <li class="nav-item">
+    <form action="gerarPDF.php" method="POST">
+      <input type="hidden" name="idPDF" value="<?=$z['id_agendamento']?>">
+      <button type="submit" class="nav-link text-dark" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+          height="16" fill="currentColor" class="bi bi-filetype-pdf" viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.6 11.85H0v3.999h.791v-1.342h.803c.287 0 .531-.057.732-.173.203-.117.358-.275.463-.474a1.42 1.42 0 0 0 .161-.677c0-.25-.053-.476-.158-.677a1.176 1.176 0 0 0-.46-.477c-.2-.12-.443-.179-.732-.179Zm.545 1.333a.795.795 0 0 1-.085.38.574.574 0 0 1-.238.241.794.794 0 0 1-.375.082H.788V12.48h.66c.218 0 .389.06.512.181.123.122.185.296.185.522Zm1.217-1.333v3.999h1.46c.401 0 .734-.08.998-.237a1.45 1.45 0 0 0 .595-.689c.13-.3.196-.662.196-1.084 0-.42-.065-.778-.196-1.075a1.426 1.426 0 0 0-.589-.68c-.264-.156-.599-.234-1.005-.234H3.362Zm.791.645h.563c.248 0 .45.05.609.152a.89.89 0 0 1 .354.454c.079.201.118.452.118.753a2.3 2.3 0 0 1-.068.592 1.14 1.14 0 0 1-.196.422.8.8 0 0 1-.334.252 1.298 1.298 0 0 1-.483.082h-.563v-2.707Zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638H7.896Z" />
+        </svg></button>
+    </form>
+  </li>
+  </ul>
+  </div>
+
+  <div class="d-flex justify-content-evenly card-body">
+    <table>
+      <tr>
+        <td>
+          <p class="card-text"><b>Data de cadastro: </b>
+            <?=$data?>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="card-text"><b>Horario de início: </b>
+            <?=$horarioI?>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="card-text"><b>Horario de término: </b>
+            <?=$horarioF?>
+          </p>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td>
+          <p class="card-text"><b>Cliente: </b>
+            <?=$z['nomeCompleto']?>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="card-text"><b>Telefone: </b>
+            <?=$z['telefone']?>
+          </p>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td>
+          <p class="card-text"><b>Raça e/ou nome do Pet: </b>
+            <?=$z['nome']. ' - ' . $z['raca']?>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="card-text"><b>Serviço: </b>
+            <?=$z['descricao']?>
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p class="card-text"><b>Funcionário dirigente: </b>
+            <?=$z['nomeComp']?>
+          </p>
+        </td>
+      </tr>
+    </table>
+
+    <p class="card-text text-muted"></p>
+  </div>
+  </div>
   </header>
-<?php } ?>
+  <?php } ?>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"

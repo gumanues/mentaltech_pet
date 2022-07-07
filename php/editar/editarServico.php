@@ -9,7 +9,7 @@ $servico_edit = $_POST ['servico_edit'];
 
 
 if ($horarioFinal != "") {
-$comando = "UPDATE `agendamento` SET `data` = '$data', `horarioInicio` = '$horarioInicio', `horarioFinal` = '$horarioFinal', `funcionarios_id` = '$funcionario', `servicos_id` = '$servico' WHERE `agendamento`.`id` = '$servico_edit'";
+$comando = "UPDATE `agendamento` SET `data` = '$data', `horarioInicio` = '$horarioInicio', `horarioFinal` = '$horarioFinal', `funcionarios_id` = '$funcionario', `servicos_id` = '$servico' WHERE `agendamento`.`id_agendamento` = '$servico_edit'";
 mysqli_query($conexao, $comando);
 header('Location: ../index.php?retorno=12.12');
     

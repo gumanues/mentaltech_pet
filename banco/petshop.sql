@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Tempo de geração: 06-Jul-2022 às 02:01
+-- Tempo de geração: 07-Jul-2022 às 03:00
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -11,7 +11,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-CREATE DATABASE petshop;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -29,7 +28,7 @@ CREATE DATABASE petshop;
 --
 
 CREATE TABLE `agendamento` (
-  `id` int(11) NOT NULL,
+  `id_agendamento` int(11) NOT NULL,
   `data` date NOT NULL,
   `status` enum('0','1','2','3') NOT NULL COMMENT '0 = Em aberto\n1 = Em andamento \n2 = Concluido\n3 = Cancelado',
   `horarioInicio` time NOT NULL,
@@ -43,11 +42,12 @@ CREATE TABLE `agendamento` (
 -- Extraindo dados da tabela `agendamento`
 --
 
-INSERT INTO `agendamento` (`id`, `data`, `status`, `horarioInicio`, `horarioFinal`, `pets_id`, `funcionarios_id`, `servicos_id`) VALUES
-(3, '2022-07-06', '2', '10:25:00', '13:30:00', 2, 1, 4),
+INSERT INTO `agendamento` (`id_agendamento`, `data`, `status`, `horarioInicio`, `horarioFinal`, `pets_id`, `funcionarios_id`, `servicos_id`) VALUES
+(3, '2022-07-06', '3', '10:25:00', '13:30:00', 2, 1, 4),
 (4, '2022-07-06', '0', '09:30:00', '18:30:00', 3, 1, 3),
 (5, '2022-07-06', '0', '13:35:00', '15:35:00', 2, 2, 5),
-(6, '2022-07-07', '0', '10:45:00', '12:35:00', 3, 1, 4);
+(6, '2022-07-07', '3', '10:45:00', '12:35:00', 3, 1, 4),
+(7, '2022-07-15', '0', '20:34:00', '22:32:00', 2, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -190,7 +190,7 @@ INSERT INTO `usuario` (`id`, `usuario`, `senha`) VALUES
 -- Índices para tabela `agendamento`
 --
 ALTER TABLE `agendamento`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id_agendamento`),
   ADD KEY `fk_agendamento_pets1_idx` (`pets_id`),
   ADD KEY `fk_agendamento_servicos1_idx` (`servicos_id`),
   ADD KEY `fk_agendamento_funcionarios1_idx` (`funcionarios_id`);
@@ -241,7 +241,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de tabela `agendamento`
 --
 ALTER TABLE `agendamento`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_agendamento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `clientes`
@@ -259,7 +259,7 @@ ALTER TABLE `funcionarios`
 -- AUTO_INCREMENT de tabela `multa`
 --
 ALTER TABLE `multa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de tabela `pets`
@@ -295,7 +295,7 @@ ALTER TABLE `agendamento`
 -- Limitadores para a tabela `multa`
 --
 ALTER TABLE `multa`
-  ADD CONSTRAINT `fk_multa_agendamento1` FOREIGN KEY (`agendamento_id`) REFERENCES `agendamento` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_multa_agendamento1` FOREIGN KEY (`agendamento_id`) REFERENCES `agendamento` (`id_agendamento`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Limitadores para a tabela `pets`

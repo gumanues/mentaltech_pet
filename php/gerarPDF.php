@@ -24,7 +24,7 @@ INNER JOIN servicos S on S.id = A.servicos_id
 INNER JOIN funcionarios F ON F.id = A.funcionarios_id
 INNER JOIN pets P ON P.id = A.pets_id
 INNER JOIN clientes C ON C.id = P.clientes_id
-WHERE A.id = '$idPDF'";
+WHERE A.id_agendamento = '$idPDF'";
 
 $resultado = mysqli_query($conexao, $comando);
 $comp = mysqli_fetch_assoc($resultado);
