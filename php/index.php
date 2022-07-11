@@ -862,7 +862,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="pet_edit" name="pet_edit" class="form-label">Selecione o Pet</label>
-                <select class="form-select" name="pet_edit" id="pet_edit">
+                <select class="form-select" name="pet_edit" id="pet_edit" onchange="carregarDadosEdicao(this.value, 'pet')">
                   <?php
 
                   $com_pet = "SELECT * FROM pets";
@@ -936,7 +936,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="funcionario_edit" name="funcionario_edit" class="form-label">Selecione o Funcionário</label>
-                <select class="form-select" name="funcionario_edit" id="funcionario_edit">
+                <select class="form-select" name="funcionario_edit" id="funcionario_edit" onchange="carregarDadosEdicao(this.value, 'funcionario')">
                   <?php
                   $com_fun = "SELECT * FROM funcionarios";
                   $res_fun = mysqli_query($conexao, $com_fun);
