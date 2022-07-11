@@ -445,6 +445,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
               <td>
                 <label for="pet" name="pet" class="form-label">Pet</label>
                 <select class="form-select" name="pet" id="pet">
+                <option value='0'>Selecione</option>
                   <?php
                   $petsser = "SELECT * FROM pets";
                   $petser = mysqli_query($conexao, $petsser);
@@ -464,6 +465,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
               <td>
                 <label for="funcionario" name="funcionario" class="form-label">Funcionário</label>
                 <select class="form-select" name="funcionario" id="funcionario">
+                <option value='0'>Selecione</option>
                   <?php
                   $funcsser = "SELECT * FROM funcionarios";
                   $funcser = mysqli_query($conexao, $funcsser);
@@ -483,6 +485,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
               <td>
                 <label for="servico" name="servico" class="form-label">Serviço</label>
                 <select class="form-select" name="servico" id="servico">
+                <option value='0'>Selecione</option>
                   <?php
                   $servicsser = "SELECT * FROM servicos";
                   $servicser = mysqli_query($conexao, $servicsser);
@@ -598,6 +601,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
               <td>
                 <label for="nomeCliente" name="nomeCliente" class="form-label">Nome do Cliente</label>
                 <select class="form-select" name="nomeCliente" id="nomeCliente">
+                <option value='0'>Selecione</option>
                   <?php  
                   $pets_cli = "SELECT * FROM clientes";
                   $pet_cli = mysqli_query($conexao, $pets_cli);
@@ -680,14 +684,20 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="servico_edit" name="servico_edit" class="form-label">Selecione o serviço</label>
-                <select class="form-select" name="servico_edit" id="servico_edit">
+                <select class="form-select" name="servico_edit" id="servico_edit" onchange="carregarDadosEdicao(this.value, 'servico')">
+                <option value='0'>Selecione</option>
                   <?php  
                   $com_servico = "SELECT * FROM agendamento";
                   $id_servico = mysqli_query($conexao, $com_servico);
                   
                   while ($id_ser = mysqli_fetch_assoc($id_servico)) {
 
+                  $id_dataedit = $id_ser['data'];
+                  $id_dataedit2 = date('d/m/Y', strtotime($id_dataedit));
                   $id_pet = $id_ser['pets_id'];
+                  $id_horaedit = $id_ser['horarioInicio'];
+                  $id_horaedit2 = date('H:i', strtotime($id_horaedit));
+
 
                   $listar_por_pets = "SELECT * FROM pets WHERE id = '$id_pet'";
                   $nome_pet = mysqli_query($conexao, $listar_por_pets);
@@ -702,7 +712,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
                   $nom_client = $nom_cli['nomeCompleto'];
                   
 
-                  echo "<option value='$id_pet'>$nom_client - $list_pets</option>";
+                  echo "<option value='$id_pet'>$nom_client - $list_pets $id_dataedit2 das $id_horaedit2</option>";
                 
                   }?>
                 </select>
@@ -711,25 +721,26 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="data" name="data" class="form-label">Data</label>
-                <input type="date" class="form-control" id="data" name="data" required>
+                <input type="date" class="form-control" id="dataEdt" name="data" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="horarioInicio" name="horarioInicio" class="form-label">Horario Início</label>
-                <input type="time" class="form-control" id="horarioInicio" value="<?=$horarioInicio?>"
+                <input type="time" class="form-control" id="horarioInicioEdt" value="<?=$horarioInicio?>"
                   name="horarioInicio" required>
               </td>
               <td>
                 <label for="horarioFinal" name="horarioFinal" class="form-label">Horario Final</label>
-                <input type="time" class="form-control" id="horarioFinal" value="<?=$horarioFinal?>" name="horarioFinal"
+                <input type="time" class="form-control" id="horarioFinalEdt" value="<?=$horarioFinal?>" name="horarioFinal"
                   required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="funcionario" name="funcionario" class="form-label">Funcionário</label>
-                <select class="form-select" name="funcionario" id="funcionario">
+                <select class="form-select" name="funcionario" id="funcionarioEdt">
+                <option value='0'>Selecione</option>
                   <?php 
                 $edit_pet_funcionario = "SELECT * FROM funcionarios";
                 $editar_pet_func = mysqli_query($conexao, $edit_pet_funcionario);
@@ -747,7 +758,8 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="servico" name="servico" class="form-label">Serviço</label>
-                <select class="form-select" name="servico" id="servico">
+                <select class="form-select" name="servico" id="servicoEdt">
+                <option value='0'>Selecione</option>
                   <?php 
                 $edit_pet_servico = "SELECT * FROM servicos";
                 $editar_pet_serv = mysqli_query($conexao, $edit_pet_servico);
@@ -787,6 +799,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
               <td>
                 <label for="cliente_edit" name="cliente_edit" class="form-label">Selecione o cliente</label>
                 <select class="form-select" name="cliente_edit" id="cliente_edit" onchange="carregarDadosEdicao(this.value, 'cliente')">
+                  <option value='0'>Selecione</option>
                   <?php 
                   $com_client = "SELECT * FROM clientes";
                   $res_clienes = mysqli_query($conexao, $com_client);
@@ -863,6 +876,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
               <td>
                 <label for="pet_edit" name="pet_edit" class="form-label">Selecione o Pet</label>
                 <select class="form-select" name="pet_edit" id="pet_edit" onchange="carregarDadosEdicao(this.value, 'pet')">
+                <option value='0'>Selecione</option>
                   <?php
 
                   $com_pet = "SELECT * FROM pets";
@@ -880,23 +894,24 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="nome" name="nome" class="form-label">Nome</label>
-                <input type="text" class="form-control" maxlength="100" minlenght="4" id="nome" name="nome" required>
+                <input type="text" class="form-control" maxlength="100" minlenght="4" id="nomeEdt" name="nome" required>
               </td>
               <td>
                 <label for="raca" name="raca" class="form-label">Raça</label>
-                <input type="text" class="form-control" maxlength="50" minlenght="4" id="raca" name="raca" required>
+                <input type="text" class="form-control" maxlength="50" minlenght="4" id="racaEdt" name="raca" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="raca" name="raca" class="form-label">Data de Nascimento</label>
-                <input type="date" class="form-control" id="raca" name="dataNasc" required>
+                <input type="date" class="form-control" id="dataNascEdt" name="dataNasc" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="nomeCliente" name="nomeCliente" class="form-label">Nome do Cliente</label>
-                <select class="form-select" name="nomeCliente" id="nomeCliente">
+                <select class="form-select" name="nomeCliente" id="nomeClienteEdt">
+                <option value='0'>Selecione</option>
                   <?php 
                   $com_nomCli = "SELECT * FROM clientes";
                   $res_nomCli = mysqli_query($conexao, $com_nomCli);
@@ -937,6 +952,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
               <td>
                 <label for="funcionario_edit" name="funcionario_edit" class="form-label">Selecione o Funcionário</label>
                 <select class="form-select" name="funcionario_edit" id="funcionario_edit" onchange="carregarDadosEdicao(this.value, 'funcionario')">
+                <option value='0'>Selecione</option>
                   <?php
                   $com_fun = "SELECT * FROM funcionarios";
                   $res_fun = mysqli_query($conexao, $com_fun);
@@ -954,21 +970,21 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="nomeFuncionario" name="nomeFuncionario" class="form-label">Nome Completo</label>
-                <input type="text" class="form-control" id="nomeFuncionario" maxlength="100" minlenght="4"
+                <input type="text" class="form-control" id="nomeFuncionarioEdt" maxlength="100" minlenght="4"
                   name="nomeFuncionario" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="cpfFuncionario" name="cpfFuncionario" class="form-label">CPF</label>
-                <input type="number" class="form-control" id="cpfFuncionario" maxlength="11" minlenght="11"
+                <input type="number" class="form-control" id="cpfFuncionarioEdt" maxlength="11" minlenght="11"
                   name="cpfFuncionario" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="telefoneFuncionario" name="telefoneFuncionario" class="form-label">Telefone</label>
-                <input type="number" class="form-control" id="telefoneFuncionario" maxlength="12" minlenght="12"
+                <input type="number" class="form-control" id="telefoneFuncionarioEdt" maxlength="12" minlenght="12"
                   name="telefoneFuncionario" required>
               </td>
             </tr>
@@ -997,6 +1013,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
               <td>
                 <label for="servico_excluir" name="servico_excluir" class="form-label">Selecione o serviço</label>
                 <select class="form-select" name="servico_excluir" id="servico_excluir">
+                <option value='0'>Selecione</option>
                   <?php  
                   $com_servico = "SELECT * FROM agendamento";
                   $id_servico = mysqli_query($conexao, $com_servico);
@@ -1004,6 +1021,10 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
                   while ($id_ser = mysqli_fetch_assoc($id_servico)) {
 
                   $id_pet = $id_ser['pets_id'];
+                  $id_datadel = $id_ser['data'];
+                  $id_datadel2 = date('d/m/Y', strtotime($id_datadel));
+                  $id_horadel = $id_ser['horarioInicio'];
+                  $id_horadel2 = date('H:i', strtotime($id_horadel));
 
                   $listar_por_pets = "SELECT * FROM pets WHERE id = '$id_pet'";
                   $nome_pet = mysqli_query($conexao, $listar_por_pets);
@@ -1018,7 +1039,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
                   $nom_client = $nom_cli['nomeCompleto'];
                   
 
-                  echo "<option value='$id_pet'>$nom_client - $list_pets</option>";
+                  echo "<option value='$id_pet'>$nom_client - $list_pets $id_datadel2 das $id_horadel2</option>";
                 
                   }?>
                 </select>
@@ -1049,6 +1070,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
               <td>
                 <label for="cliente_excluir" name="cliente_excluir" class="form-label">Selecione o cliente</label>
                 <select class="form-select" name="cliente_excluir" id="cliente_excluir">
+                <option value='0'>Selecione</option>
                   <?php 
                   $com_client = "SELECT * FROM clientes";
                   $res_clienes = mysqli_query($conexao, $com_client);
@@ -1088,6 +1110,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
               <td>
                 <label for="pet_excluir" name="pet_excluir" class="form-label">Selecione o Pet</label>
                 <select class="form-select" name="pet_excluir" id="pet_excluir">
+                <option value='0'>Selecione</option>
                   <?php
 
                   $ex_pet = "SELECT * FROM pets";
@@ -1125,9 +1148,9 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
           <table>
             <tr>
               <td>
-                <label for="funcionario_excluir" name="funcionario_excluir" class="form-label">Selecione o
-                  Funcionário</label>
+                <label for="funcionario_excluir" name="funcionario_excluir" class="form-label">Selecione o Funcionário</label>
                 <select class="form-select" name="funcionario_excluir" id="funcionario_excluir">
+                <option value='0'>Selecione</option>
                   <?php
                   $com_fun = "SELECT * FROM funcionarios";
                   $res_fun = mysqli_query($conexao, $com_fun);
@@ -1201,7 +1224,8 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="servico_edit" name="servico_edit" class="form-label">Selecione o Serviço</label>
-                <select class="form-select" name="servico_edit" id="servico_edit">
+                <select class="form-select" name="servico_edit" id="servico_edit" onchange="carregarDadosEdicao(this.value, 'modalidade')">
+                <option value='0'>Selecione</option>
                   <?php
                   $com_ser = "SELECT * FROM servicos";
                   $res_ser = mysqli_query($conexao, $com_ser);
@@ -1219,14 +1243,14 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="descricaoServico" name="descricaoServico" class="form-label">Descrição do Serviço</label>
-                <input type="text" class="form-control" id="descricaoServico" maxlength="100" minlenght="4"
+                <input type="text" class="form-control" id="descricaoServicoEdt" maxlength="100" minlenght="4"
                   name="descricaoServico" required>
               </td>
             </tr>
             <tr>
               <td>
                 <label for="valorServico" name="valorServico" class="form-label">Valor do Serviço</label>
-                <input type="number" class="form-control" maxlength="6" placeholder="350,00 R$" id="valorServico"
+                <input type="number" class="form-control" maxlength="6" placeholder="350,00 R$" id="valorServicoEdt"
                   name="valorServico" required>
               </td>
             </tr>
@@ -1255,6 +1279,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
               <td>
                 <label for="servico_excluir" name="servico_excluir" class="form-label">Selecione o Serviço</label>
                 <select class="form-select" name="servico_excluir" id="servico_excluir">
+                <option value='0'>Selecione</option>
                   <?php
                   $com_ser = "SELECT * FROM servicos";
                   $res_ser = mysqli_query($conexao, $com_ser);
@@ -1364,7 +1389,8 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
           <tr>
               <td>
                 <label for="multa_edit" name="multa_edit" class="form-label">Selecione o cliente</label>
-                <select class="form-select" name="multa_edit" id="multa_edit">
+                <select class="form-select" name="multa_edit" id="multa_edit" onchange="carregarDadosEdicao(this.value, 'multa')">
+                <option value='0'>Selecione</option>
                   <?php 
                   $com_multa = "SELECT * FROM multa M
                                 INNER JOIN agendamento A ON A.id_agendamento = M.agendamento_id
@@ -1386,7 +1412,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
                     $vhorarioF = date('H:i', strtotime($vhf));
 
 
-                    echo "<option value='$id_multae'>$clinome no valor de $valo_mult data $valo_dat, horario $vhorarioI às $vhorarioF</option>";
+                    echo "<option value='$id_multae'>$clinome $valo_dat</option>";
                   
                   }?>
                 </select>
@@ -1395,7 +1421,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="multa" name="multa" class="form-label">Valor</label>
-                <input type="number" class="form-control" id="multa" name="multa" required>
+                <input type="number" class="form-control" id="multaEdt" name="multa" required>
               </td>
             </tr>
           </table>
@@ -1449,14 +1475,14 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
     <table>
       <tr>
         <td>
-          <label style="margin-top: 5px;" for="filtrar" name="filtrar" class="form-label">Filtrar por </label>
+          <label style="margin-top: 5px;" for="filtrar" name="filtrar" class="form-label">Filtrar por Data</label>
         </td>
         <td>
           <div>
             <form action="index.php" method="get">
               <select class="form-select" name="filtrar" id="filtrar">
-                <option value="ASC">Filtrar por ordem crescente</option>
-                <option value="DESC">Filtrar por ordem decrescente</option>
+                <option value="ASC">Ordem crescente</option>
+                <option value="DESC">Ordem decrescente</option>
               </select>
         </td>
         <td>
