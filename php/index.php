@@ -15,6 +15,8 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="../js/funcoes.js"></script>
   <style>
     body {
       margin-top: 55px;
@@ -784,7 +786,7 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             <tr>
               <td>
                 <label for="cliente_edit" name="cliente_edit" class="form-label">Selecione o cliente</label>
-                <select class="form-select" name="cliente_edit" id="cliente_edit">
+                <select class="form-select" name="cliente_edit" id="cliente_edit" onchange="carregarDadosEdicao(this.value, 'cliente')">
                   <?php 
                   $com_client = "SELECT * FROM clientes";
                   $res_clienes = mysqli_query($conexao, $com_client);
@@ -802,36 +804,36 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
             </tr>
             <tr>
               <td>
-                <label for="nomeCompleto" name="nomeCompleto" class="form-label">Nome Completo</label>
-                <input type="text" class="form-control" id="nomeCompleto" maxlength="100" minlenght="4"
-                  name="nomeCompleto" required>
+                <label for="nomeCompletoEdt" name="nomeCompleto" class="form-label">Nome Completo</label>
+                <input type="text" class="form-control" id="nomeCompletoEdt" maxlength="100" minlenght="4"
+                  name="nomeCompleto" value="" required>
               </td>
               <td>
-                <label for="email" name="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="email" maxlength="100" minlenght="4" name="email" required>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <label for="cpf" name="cpf" class="form-label">CPF</label>
-                <input type="number" class="form-control" id="cpf" maxlength="11" minlenght="11" name="cpf" required>
+                <label for="emailEdt" name="email" class="form-label">E-mail</label>
+                <input type="email" value="" class="form-control" id="emailEdt" maxlength="100" minlenght="4" name="email" required>
               </td>
             </tr>
             <tr>
               <td>
-                <label for="telefone" name="telefone" class="form-label">Telefone</label>
-                <input type="number" class="form-control" id="telefone" maxlength="12" minlenght="12" name="telefone"
+                <label for="cpfEdt" name="cpf" class="form-label">CPF</label>
+                <input type="number"  value="" class="form-control" id="cpfEdt" maxlength="11" minlenght="11" name="cpf" required>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="telefoneEdt" name="telefone" class="form-label">Telefone</label>
+                <input type="number" value="" class="form-control" id="telefoneEdt" maxlength="12" minlenght="12" name="telefone"
                   required>
               </td>
             </tr>
             <tr>
               <td>
-                <label for="cep" name="cep" class="form-label">CEP</label>
-                <input type="number" class="form-control" id="cep" maxlength="8" minlenght="8" name="cep" required>
+                <label for="cepEdt" name="cep" class="form-label">CEP</label>
+                <input type="number" value="" class="form-control" id="cepEdt" maxlength="8" minlenght="8" name="cep" required>
               </td>
               <td>
-                <label for="numero" name="numero" class="form-label">Nº</label>
-                <input type="number" class="form-control" id="numero" maxlength="8" minlenght="8" name="numero"
+                <label for="numeroEdt" name="numero" class="form-label">Nº</label>
+                <input type="number" value="" class="form-control" id="numeroEdt" maxlength="8" minlenght="8" name="numero"
                   required>
               </td>
             </tr>
