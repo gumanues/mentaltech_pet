@@ -5,7 +5,7 @@ $valor = $_POST['multa'];
 
 
 if ($multa_edit != "") {
-$comando = "UPDATE `multa` SET `valor` = '$valor' WHERE `multa`.`id` = '$multa_edit'";
+$comando = "UPDATE `multa` SET `valor` = '$valor' WHERE `multa`.`agendamento_id` = '$multa_edit'";
 mysqli_query($conexao, $comando);
 header('Location: ../index.php?retorno=10.10');
     

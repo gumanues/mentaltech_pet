@@ -384,7 +384,12 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
         </div>
 
         <div>
-          <a type="button" class="mt-2 dropdown-item btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <a type="button" class="mt-2 dropdown-item btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalpets">
+            Vinculações
+          </a>
+        </div>
+        <div>
+          <a type="button" class="mt-3 dropdown-item btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Multas
           </a>
         </div>
@@ -1283,12 +1288,12 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
       <div class="modal-body" style="height: 300px; overflow-y: scroll;">
         <table class='text-center'>
           <tr class='m-5'>
-            <td class='pe-3'>Cliente</td>
-            <td class='pe-3'>Telefone</td>
-            <td class='pe-3'>Serviço</td>
-            <td class='pe-3'>Multa</td>
-            <td class='pe-3'>Editar</td>
-            <td class='pe-3'>Excluir</td>
+            <td class='pe-3'><b>Cliente</b></td>
+            <td class='pe-3'><b>Telefone</b></td>
+            <td class='pe-3'><b>Serviço</b></td>
+            <td class='pe-3'><b>Multa</b></td>
+            <td class='pe-3'><b>Editar</b></td>
+            <td class='pe-3'><b>Excluir</b></td>
           </tr>
           <?php 
         
@@ -1354,27 +1359,32 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
         </div>
         <div class="modal-body">
           <table>
-            <tr>
+          <tr>
               <td>
                 <label for="multa_edit" name="multa_edit" class="form-label">Selecione o cliente</label>
                 <select class="form-select" name="multa_edit" id="multa_edit">
                   <?php 
-                  $com_multa = "SELECT * FROM multa";
+                  $com_multa = "SELECT * FROM multa M
+                                INNER JOIN agendamento A ON A.id_agendamento = M.agendamento_id
+                                INNER JOIN pets P ON P.id = A.pets_id
+                                INNER JOIN clientes C ON C.id = P.clientes_id";
                   $res_clienes = mysqli_query($conexao, $com_multa);
                   while ($multaes = mysqli_fetch_assoc($res_clienes)) {
 
                     $id_multae = $multaes['agendamento_id'];
+                    $clinome = $multaes['nomeCompleto'];
+                    $valo_mult = $multaes['valor'];
+                    $vdat = $multaes ['data'];
+                    $vhi = $multaes['horarioInicio'];
+                    $vhf = $multaes['horarioFinal'];
 
-                    $comando_mulltas = "SELECT * FROM agendamento A 
-                    INNER JOIN servicos S on S.id = A.servicos_id
-                    INNER JOIN pets P ON P.id = A.pets_id
-                    INNER JOIN clientes C ON C.id = P.clientes_id"; 
-                    $com_mulltae = mysqli_query($conexao, $comando_mulltas);
-                    $mull = mysqli_fetch_assoc($com_mulltae); 
-                  
-                    $clinome = $mull['nomeCompleto'];
 
-                    echo "<option value='$id_multae'>$clinome</option>";
+                    $valo_dat = date('d/m/Y', strtotime($vdat));
+                    $vhorarioI = date('H:i', strtotime($vhi));
+                    $vhorarioF = date('H:i', strtotime($vhf));
+
+
+                    echo "<option value='$id_multae'>$clinome no valor de $valo_mult data $valo_dat, horario $vhorarioI às $vhorarioF</option>";
                   
                   }?>
                 </select>
@@ -1391,6 +1401,39 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
           <button type="submit" class="btn btn-primary">Editar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="exampleModalpets" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="editar/editarMulta.php" method="post">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Pets e Clientes</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <?php 
+            $comando_vinc = "SELECT * FROM pets P
+            INNER JOIN clientes C ON C.id = P.clientes_id";
+            $sql_vinc = mysqli_query($conexao, $comando_vinc);
+            
+            ?>
+          <table>
+          <tr>
+            <td>
+              <?php while($v = mysqli_fetch_assoc($sql_vinc)) { ?>
+              <p class="card-text">Pet <b><?=$v['nome']?></b> Pertence a <b><?=$v['nomeCompleto']?></b></p><hr>
+              <?php } ?>
+            </td>
+          </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
         </div>
       </form>
     </div>
@@ -1522,6 +1565,7 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
 ?>
 
   </a>
+  <div>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
     <li>
       <form action="editar/editarStatus.php" method="post"><button class="dropdown-item" type="submit">
@@ -1591,7 +1635,6 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
             </tr>
           </table>
         </div>
-        <input type="hidden" name="status" value="2">
         <input type="hidden" name="edit_status" value="<?=$z['id_agendamento']?>">
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
