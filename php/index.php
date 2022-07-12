@@ -1468,6 +1468,61 @@ if (isset($_SESSION['login']) && $_SESSION['login'] == 1) {
   </div>
 </div>
 
+<div class="modal fade" id="exampleModalMulta1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <form action="cadastrar/cadastrarMulta.php" method="post">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Gerar Multa</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table>
+          <tr>
+              <td>
+                <label for="cliente_edit" name="cliente_edit" class="form-label">Selecione o cliente</label>
+                <select class="form-select" name="cliente_multa" id="cliente_multa">
+                  <option value='0'>Selecione</option>
+                  <?php 
+                  $com_client = "SELECT * FROM agendamento A
+                  INNER JOIN pets P ON P.id = A.pets_id 
+                  INNER JOIN clientes C ON C.id = P.clientes_id ";
+                  $res_clienes = mysqli_query($conexao, $com_client);
+                  while ($clientes = mysqli_fetch_assoc($res_clienes)) {
+                  
+                  $id_cliente = $clientes['id_agendamento'];
+                  $nom_cliente = $clientes['nomeCompleto'];
+
+                  $mul_dt = $clientes['data'];
+                  $mul_hi =$clientes['horarioInicio'];
+                                    
+                  $data_gmulta = date('d/m/Y', strtotime($mul_dt));
+                  $horarioI_gmulta = date('H:i', strtotime($mul_hi));
+
+                  echo "<option value='$id_cliente'>$nom_cliente $data_gmulta das $horarioI_gmulta</option>"; 
+                  }
+                  
+                  ?>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="multa" name="multa" class="form-label">Valor</label>
+                <input type="number" class="form-control" id="multa" name="multa" required>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="submit" class="btn btn-primary">Gerar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <body class="bg-light">
 
   <!-- Filtrar -->
@@ -1644,35 +1699,6 @@ class="bi bi-check-circle" viewBox="0 0 16 16">
   </ul>
   </div>
   </a>
-
-  <div class="modal fade" id="exampleModalMulta1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <form action="cadastrar/cadastrarMulta.php" method="post">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Gerar Multa</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <table>
-            <tr>
-              <td>
-                <label for="multa" name="multa" class="form-label">Valor</label>
-                <input type="number" class="form-control" id="multa" name="multa" required>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <input type="hidden" name="edit_status" value="<?=$z['id_agendamento']?>">
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-          <button type="submit" class="btn btn-primary">Gerar</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
 
   </li>
   <li class="nav-item">

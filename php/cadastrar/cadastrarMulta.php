@@ -1,7 +1,7 @@
 <?php require_once('../conexao.php'); 
 
 $multa = $_POST['multa'];
-$edit_status = $_POST['edit_status'];
+$edit_status = $_POST['cliente_multa'];
 
 
 $validar = "SELECT * FROM multa";
